@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package movieapp;
+package movieapp.GUI;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -17,18 +17,14 @@ import javafx.scene.control.Button;
  *
  * @author maxim
  */
-public class AddMovieController implements Initializable
+public class AddGenreController implements Initializable
 {
 
-    @FXML
-    private Button AddMovie;
     @FXML
     private Button Close;
 
     /**
      * Initializes the controller class.
-     * @param url
-     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb)
@@ -37,19 +33,9 @@ public class AddMovieController implements Initializable
     }    
 
     @FXML
-    private void addMovie(ActionEvent event)
-    {
-    }
-
-    @FXML
-    private void clickbtnChoose(ActionEvent event)
-    {
-    }
-
-    @FXML
     private void close(ActionEvent event)
     {
-        System.exit(0);
+         System.exit(0);
     }
     
 }
