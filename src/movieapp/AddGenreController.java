@@ -7,15 +7,21 @@ package movieapp;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 
 /**
  * FXML Controller class
  *
  * @author maxim
  */
-public class EditMovieController implements Initializable
+public class AddGenreController implements Initializable
 {
+
+    @FXML
+    private Button Close;
 
     /**
      * Initializes the controller class.
@@ -25,5 +31,11 @@ public class EditMovieController implements Initializable
     {
         // TODO
     }    
+
+    @FXML
+    private void close(ActionEvent event)
+    {
+         System.exit(0);
+    }
     
 }

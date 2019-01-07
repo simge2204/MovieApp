@@ -16,17 +16,17 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
 
 /**
+ * FXML Controller class
  *
- * @author kedde
+ * @author maxim
  */
-public class MainWindowController implements Initializable {
-    
-    @FXML
-    private Label label;
+public class MainWindowController implements Initializable
+{
+
     @FXML
     private Button søge;
     @FXML
-    private TextField søgefelt;
+    private Label label;
     @FXML
     private TableColumn<?, ?> genre;
     @FXML
@@ -38,6 +38,8 @@ public class MainWindowController implements Initializable {
     @FXML
     private TableColumn<?, ?> lastview;
     @FXML
+    private TextField søgefelt;
+    @FXML
     private Button AddMovie;
     @FXML
     private Button RemoveMovie;
@@ -45,14 +47,17 @@ public class MainWindowController implements Initializable {
     private Button EditMovie;
     @FXML
     private Button Reset;
-    
-    private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Hello World!");
-    }
-    
+    @FXML
+    private Button Close;
+    @FXML
+    private Button AddGenre;
+
+    /**
+     * Initializes the controller class.
+     */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(URL url, ResourceBundle rb)
+    {
         // TODO
     }    
 
@@ -64,6 +69,7 @@ public class MainWindowController implements Initializable {
     @FXML
     private void addMovie(ActionEvent event)
     {
+        
     }
 
     @FXML
@@ -78,6 +84,17 @@ public class MainWindowController implements Initializable {
 
     @FXML
     private void reset(ActionEvent event)
+    {
+    }
+
+    @FXML
+    private void close(ActionEvent event)
+    {
+        System.exit(0);
+    }
+
+    @FXML
+    private void addGenre(ActionEvent event)
     {
     }
     
