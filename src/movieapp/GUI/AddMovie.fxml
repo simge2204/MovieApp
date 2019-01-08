@@ -8,9 +8,9 @@
 
 <AnchorPane id="AnchorPane" prefHeight="355.0" prefWidth="416.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="movieapp.GUI.AddMovieController">
    <children>
-      <TextField layoutX="161.0" layoutY="70.0" />
-      <TextField layoutX="161.0" layoutY="174.0" />
-      <Label layoutX="123.0" layoutY="69.0" text="Title">
+      <TextField fx:id="TitleField" layoutX="161.0" layoutY="70.0" />
+      <TextField fx:id="LastviewField" layoutX="161.0" layoutY="174.0" />
+      <Label fx:id="TitleField" layoutX="123.0" layoutY="69.0" text="Title">
          <font>
             <Font size="17.0" />
          </font>
@@ -20,16 +20,16 @@
             <Font size="17.0" />
          </font>
       </Label>
-      <Button fx:id="AddMovie" layoutX="197.0" layoutY="247.0" mnemonicParsing="false" onAction="#addMovie" text="AddMovie" />
-      <TextField layoutX="162.0" layoutY="209.0" prefHeight="26.0" prefWidth="114.0" />
+      <Button fx:id="AddMovieBtn" layoutX="197.0" layoutY="247.0" mnemonicParsing="false" onAction="#addMovie" text="AddMovie" />
+      <TextField fx:id="PathField" layoutX="162.0" layoutY="209.0" prefHeight="26.0" prefWidth="114.0" />
       <Label layoutX="118.0" layoutY="209.0" text="Path">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
       <Button layoutX="285.0" layoutY="210.0" mnemonicParsing="false" onAction="#clickbtnChoose" text="..." />
-      <TextField layoutX="161.0" layoutY="138.0" />
-      <TextField layoutX="161.0" layoutY="104.0" />
+      <TextField fx:id="MyRatingField" layoutX="161.0" layoutY="138.0" />
+      <TextField fx:id="ImdbField" layoutX="161.0" layoutY="104.0" />
       <Label layoutX="60.0" layoutY="102.0" text="Imdb Rating">
          <font>
             <Font size="17.0" />

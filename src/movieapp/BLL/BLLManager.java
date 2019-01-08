@@ -6,17 +6,23 @@
 package movieapp.BLL;
 
 import movieapp.DAL.MovieDAO;
+import movieapp.BE.Movie;
 
 /**
  *
  * @author simge
  */
 public class BLLManager
-    {
+{
     MovieDAO DAO = new MovieDAO();
     
     public void addMovie(String title, String imdb, String rating, String lastview, String path)
         {
         DAO.addMovie(title, imdb, rating, lastview, path);
         }
+    
+    public void editMovie(Movie movie)
+    {
+     DAO.editMovie(movie);
     }
+}
