@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package movieapp.BE;
+package movieapp.GUI;
 
 import movieapp.BLL.BLLManager;
 
@@ -11,23 +11,15 @@ import movieapp.BLL.BLLManager;
  *
  * @author simge
  */
-public class MovieModel
+public class CategoryModel
     {
     private BLLManager bllManager = new BLLManager();
     
-    public void addMovie(String name)
-        {
-        bllManager.addMovie(name);
-        }
-    public void removeMovie()
+    public void addCategory()
         {
         
         }
-    public void addRating()
-        {
-        
-        }
-    public void editRating()
+    public void removeCategory()
         {
         
         }
