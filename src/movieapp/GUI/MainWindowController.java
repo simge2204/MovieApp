@@ -5,15 +5,20 @@
  */
 package movieapp.GUI;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -54,6 +59,8 @@ public class MainWindowController implements Initializable
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb)
@@ -67,9 +74,15 @@ public class MainWindowController implements Initializable
     }
 
     @FXML
-    private void addMovie(ActionEvent event)
+    private void addMovie(ActionEvent event) throws IOException
     {
-        
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AddMovie.fxml"));
+        Parent root1 = (Parent)fxmlLoader.load();
+        Stage stage = new Stage();
+        movieapp.GUI.AddMovieController cpController = fxmlLoader.getController();
+        stage.setTitle("AddMovie");
+        stage.setScene(new Scene(root1));
+        stage.show();
     }
 
     @FXML
@@ -94,8 +107,15 @@ public class MainWindowController implements Initializable
     }
 
     @FXML
-    private void addGenre(ActionEvent event)
+    private void addGenre(ActionEvent event) throws IOException
     {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AddGenre.fxml"));
+        Parent root1 = (Parent)fxmlLoader.load();
+        Stage stage = new Stage();
+        movieapp.GUI.AddGenreController cpController = fxmlLoader.getController();
+        stage.setTitle("AddGenre");
+        stage.setScene(new Scene(root1));
+        stage.show();
     }
     
 }
