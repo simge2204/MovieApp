@@ -14,7 +14,7 @@ public class Movie
     private int id;
     private String name;
     private int IMDBRating;
-    private int PersonalRating;
+    private int personalRating;
     
     public Movie()
         {
@@ -46,10 +46,10 @@ public class Movie
         }
     public int getPersonalRating()
         {
-        return PersonalRating;
+        return personalRating;
         }
     public void setPersonalRating(int PersonalRating)
         {
-        this.PersonalRating = PersonalRating;
+        this.personalRating = PersonalRating;
         }
     }

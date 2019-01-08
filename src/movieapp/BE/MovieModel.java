@@ -5,33 +5,30 @@
  */
 package movieapp.BE;
 
+import movieapp.BLL.BLLManager;
+
 /**
  *
  * @author simge
  */
-public class Category
+public class MovieModel
     {
-    private int id;
-    private String genre;
+    private BLLManager bllManager = new BLLManager();
     
-    public Category()
+    public void addMovie(String name)
+        {
+        bllManager.addMovie(name);
+        }
+    public void removeMovie()
         {
         
         }
-    public int getId()
+    public void addRating()
         {
-        return id;
+        
         }
-    public void setId(int id)
+    public void editRating()
         {
-        this.id = id;
-        }
-    public String getGenre()
-        {
-        return genre;
-        }
-    public void setGenre(String genre)
-        {
-        this.genre = genre;
+        
         }
     }
