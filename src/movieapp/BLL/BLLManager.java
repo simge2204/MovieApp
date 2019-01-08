@@ -5,7 +5,7 @@
  */
 package movieapp.BLL;
 
-import movieapp.DAL.DAO;
+import movieapp.DAL.MovieDAO;
 
 /**
  *
@@ -13,7 +13,7 @@ import movieapp.DAL.DAO;
  */
 public class BLLManager
     {
-    DAO DAO = new DAO();
+    MovieDAO DAO = new MovieDAO();
     
     public void addMovie(String name)
         {
