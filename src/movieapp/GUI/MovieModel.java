@@ -15,9 +15,9 @@ public class MovieModel
     {
     private BLLManager bllManager = new BLLManager();
     
-    public void addMovie(String name)
+    public void addMovie(String title, String imdb, String rating, String lastview, String path)
         {
-        bllManager.addMovie(name);
+        bllManager.addMovie(title, imdb, rating, lastview, path);
         }
     public void removeMovie()
         {

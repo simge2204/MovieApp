@@ -15,8 +15,8 @@ public class BLLManager
     {
     MovieDAO DAO = new MovieDAO();
     
-    public void addMovie(String name)
+    public void addMovie(String title, String imdb, String rating, String lastview, String path)
         {
-        DAO.addMovie(name);
+        DAO.addMovie(title, imdb, rating, lastview, path);
         }
     }

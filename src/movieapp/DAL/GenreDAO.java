@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import movieapp.BE.Category;
 
 /**
  *
@@ -35,7 +36,7 @@ public class GenreDAO
         }
         }
     
-    public void deleteMovie(int id) throws SQLServerException, SQLException
+    public void deleteGenre(int id) throws SQLServerException, SQLException
     {
         try (Connection con = cM.getConnection())
         {
@@ -50,4 +51,19 @@ public class GenreDAO
             Logger.getLogger(GenreDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }  
+    
+    public void editGenre(Category genre) 
+    {
+        try (Connection con = cM.getConnection()) 
+    {
+            PreparedStatement stmt = con.prepareStatement("UPDATE Genre SET Name=?");
+            stmt.setInt(2, genre.getId());
+            stmt.setString(1, genre.getGenre());
+            stmt.executeUpdate();
+        }
+        catch (SQLException ex) {
+            Logger.getLogger(MovieDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
     }

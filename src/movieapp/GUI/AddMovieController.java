@@ -39,6 +39,7 @@ public class AddMovieController implements Initializable
     @FXML
     private void addMovie(ActionEvent event)
     {
+       
     }
 
     @FXML

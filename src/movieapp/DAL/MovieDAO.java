@@ -64,23 +64,23 @@ public class MovieDAO
         }
     }  
     
-//    public void editMovie(Movie movie) 
-//    {
-//        try (Connection con = cM.getConnection()) 
-//    {
-//            PreparedStatement stmt = con.prepareStatement("UPDATE Song SET name=?, artist=?, genre=?, length=?, path=? WHERE id=?");
-//            stmt.setInt(6, movie.getId());
-//            stmt.setString(1, movie.getTitle());
-//            stmt.setString(2, movie.getArtist());
-//            stmt.setString(3, movie.getGenre());
-//            stmt.setString(4, movie.getTime());
+public void editMovie(Movie movie) 
+    {
+        try (Connection con = cM.getConnection()) 
+    {
+            PreparedStatement stmt = con.prepareStatement("UPDATE Song SET Title=?, IMDB=?, Rating=?, LastView=?, Path=? WHERE Id=?");
+            stmt.setInt(6, movie.getId());
+            stmt.setString(1, movie.getName());
+            stmt.setFloat(2, movie.getIMDBRating());
+            stmt.setFloat(3, movie.getPersonalRating());
+//            stmt.setString(4, movie.getLastview());
 //            stmt.setString(5, movie.getPath());
-//            stmt.executeUpdate();
-//        }
-//        catch (SQLException ex) {
-//            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        
-//    }
+            stmt.executeUpdate();
+        }
+        catch (SQLException ex) {
+            Logger.getLogger(MovieDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
 }
 
