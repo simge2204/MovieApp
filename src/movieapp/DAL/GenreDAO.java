@@ -26,7 +26,7 @@ public class GenreDAO
         {
             try (Connection con = cM.getConnection()){
             PreparedStatement stmt;
-            stmt = con.prepareStatement("INSERT INTO Song(Name) VALUES(?)");
+            stmt = con.prepareStatement("INSERT INTO Genre(Name) VALUES(?)");
             stmt.setString(1, name);
             stmt.executeUpdate();
         }
@@ -56,7 +56,7 @@ public class GenreDAO
     {
         try (Connection con = cM.getConnection()) 
     {
-            PreparedStatement stmt = con.prepareStatement("UPDATE Genre SET Name=?");
+            PreparedStatement stmt = con.prepareStatement("UPDATE Genre SET Name = ? WHERE Id = ?");
             stmt.setInt(2, genre.getId());
             stmt.setString(1, genre.getGenre());
             stmt.executeUpdate();
@@ -66,4 +66,6 @@ public class GenreDAO
         }
         
     }
+    
+    
     }

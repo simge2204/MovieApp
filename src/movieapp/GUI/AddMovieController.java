@@ -25,8 +25,10 @@ import movieapp.BLL.BLLManager;
  */
 public class AddMovieController implements Initializable
 {
-    private Movie selectedMovie
+    private Movie selectedMovie;
+    private MovieModel movieModel = new MovieModel();
     private BLLManager bllManager = new BLLManager();
+    private int type = 1;
     @FXML
     private Button AddMovieBtn;
     @FXML
@@ -65,7 +67,7 @@ public class AddMovieController implements Initializable
         switch (type) 
         {
             case 1:
-                Movie.addMovie(Title, Imdb, MyRating, Lastview, path);
+                movieModel.addMovie(Title, Imdb, MyRating, Lastview, path);
                 break;
             case 2:
                 selectedMovie.setName(Title);
