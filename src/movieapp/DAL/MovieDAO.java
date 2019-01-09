@@ -8,7 +8,10 @@ package movieapp.DAL;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import movieapp.BE.Movie;
@@ -81,6 +84,43 @@ public void editMovie(Movie movie)
             Logger.getLogger(MovieDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+    }
+    public List<Movie> getAllMovies() 
+    {
+        return getAllMovies("");
+    
+    }
+    public List<Movie> getAllMovies(String search) 
+    {
+        
+        List<Movie> movies = new ArrayList();
+      
+        try (Connection con = cM.getConnection())
+        {
+            PreparedStatement stmt;
+            stmt = con.prepareStatement("SELECT * FROM Movie WHERE Title like ?");
+            stmt.setString(1, "%"+search+"%");
+            stmt.setString(2, "%"+search+"%");
+            ResultSet rs = stmt.executeQuery();
+            
+            while(rs.next())
+            {
+                Movie currentMovie = new Movie();
+                currentMovie.setId(rs.getInt("id"));
+                currentMovie.setName(rs.getString("Title"));
+                currentMovie.setIMDBRating(rs.getFloat("IMDB"));
+                currentMovie.setPersonalRating(rs.getFloat("Rating"));
+//                currentMovie.set(rs.getString("length"));
+//                currentMovie.setPath(rs.getString("path"));
+                movies.add(currentMovie);
+            }
+        } 
+        catch (SQLException ex) {
+            Logger.getLogger(MovieDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+       
+        return movies;
     }
 }
 
