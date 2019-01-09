@@ -5,6 +5,8 @@
  */
 package movieapp.GUI;
 
+import java.sql.SQLException;
+import movieapp.BE.Category;
 import movieapp.BLL.BLLManager;
 
 /**
@@ -15,12 +17,16 @@ public class CategoryModel
     {
     private BLLManager bllManager = new BLLManager();
     
-    public void addCategory()
+    public void addGenre(String name)
         {
-        
+        bllManager.addGenre(name);
         }
-    public void removeCategory()
+    public void deleteGenre(int id) throws SQLException
         {
-        
+        bllManager.deleteGenre(id);
+        }
+    public void editGenre(Category genre)
+        {
+        bllManager.editGenre(genre);
         }
     }

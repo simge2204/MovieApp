@@ -5,6 +5,8 @@
  */
 package movieapp.GUI;
 
+import java.sql.SQLException;
+import movieapp.BE.Movie;
 import movieapp.BLL.BLLManager;
 
 /**
@@ -19,9 +21,13 @@ public class MovieModel
         {
         bllManager.addMovie(title, imdb, rating, lastview, path);
         }
-    public void removeMovie()
+    public void deleteMovie(int id) throws SQLException
         {
-        
+        bllManager.deleteMovie(id);
+        }
+    public void editMovie(Movie movie)
+        {
+        bllManager.editMovie(movie);
         }
     public void addRating()
         {

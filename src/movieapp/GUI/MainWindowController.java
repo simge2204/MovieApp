@@ -5,9 +5,15 @@
  */
 package movieapp.GUI;
 
+import java.awt.BorderLayout;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
+import javafx.beans.binding.Bindings;
+import javafx.beans.property.DoubleProperty;
+import javafx.embed.swing.JFXPanel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,8 +23,16 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.StackPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
+import movieapp.BE.Movie;
+import movieapp.BLL.BLLManager;
 
 /**
  * FXML Controller class
@@ -27,7 +41,10 @@ import javafx.stage.Stage;
  */
 public class MainWindowController implements Initializable
 {
-
+    private Movie selectedMovie;
+    private MovieModel movieModel = new MovieModel();
+    private BLLManager bllManager = new BLLManager();
+    MainWindowController mainWindowController = new MainWindowController();
     @FXML
     private Button søge;
     @FXML
@@ -56,6 +73,10 @@ public class MainWindowController implements Initializable
     private Button Close;
     @FXML
     private Button AddGenre;
+    @FXML
+    private TableView<Movie> filmfelt;
+    @FXML
+    private Button RemoveGenre;
 
     /**
      * Initializes the controller class.
@@ -77,11 +98,14 @@ public class MainWindowController implements Initializable
     private void addMovie(ActionEvent event) throws IOException
     {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AddMovie.fxml"));
-        Parent root1 = (Parent)fxmlLoader.load();
+        Parent root2 = (Parent)fxmlLoader.load();
         Stage stage = new Stage();
         movieapp.GUI.AddMovieController cpController = fxmlLoader.getController();
+        cpController.setMovieModel(movieModel);
+        cpController.setMainWindowController(this);
+        cpController.setNew();
         stage.setTitle("AddMovie");
-        stage.setScene(new Scene(root1));
+        stage.setScene(new Scene(root2));
         stage.show();
     }
 
@@ -91,9 +115,55 @@ public class MainWindowController implements Initializable
     }
 
     @FXML
-    private void editMovie(ActionEvent event)
+    private void editMovie(ActionEvent event) throws IOException, SQLException
     {
+    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AddMovie.fxml"));
+        Parent root2 = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        movieapp.GUI.AddMovieController cpController=fxmlLoader.getController();
+        cpController.setMovieModel(movieModel);
+        cpController.setMainWindowController(this);
+        cpController.setEdit();
+        selectedMovie = filmfelt.getSelectionModel().getSelectedItem();
+        cpController.setMovie(selectedMovie);
+        stage.setTitle("EditPlaylist");
+        stage.setScene(new Scene(root2));
+        stage.show();
     }
+    
+    private void playMovie()
+        {
+        final JFXPanel VFXPanel = new JFXPanel();
+
+        File video_source = new File("tutorial.mp4");
+        Media m = new Media(video_source.toURI().toString());
+        MediaPlayer player = new MediaPlayer(m);
+        MediaView viewer = new MediaView(player);
+
+        StackPane root = new StackPane();
+        Scene scene = new Scene(root);
+
+        // center video position
+        javafx.geometry.Rectangle2D screen = Screen.getPrimary().getVisualBounds();
+        viewer.setX((screen.getWidth() - filmfelt.getWidth()) / 2);
+        viewer.setY((screen.getHeight() - filmfelt.getHeight()) / 2);
+
+        // resize video based on screen size
+        DoubleProperty width = viewer.fitWidthProperty();
+        DoubleProperty height = viewer.fitHeightProperty();
+        width.bind(Bindings.selectDouble(viewer.sceneProperty(), "width"));
+        height.bind(Bindings.selectDouble(viewer.sceneProperty(), "height"));
+        viewer.setPreserveRatio(true);
+
+        // add video to stackpane
+        root.getChildren().add(viewer);
+
+        VFXPanel.setScene(scene);
+        //player.play();
+        filmfelt.setLayout(new BorderLayout());
+        filmfelt.add(VFXPanel, BorderLayout.CENTER);
+        }
+
 
     @FXML
     private void reset(ActionEvent event)
@@ -117,5 +187,10 @@ public class MainWindowController implements Initializable
         stage.setScene(new Scene(root1));
         stage.show();
     }
+
+    @FXML
+    private void removeGenre(ActionEvent event)
+        {
+        }
     
 }

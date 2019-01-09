@@ -7,7 +7,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="587.0" prefWidth="887.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="movieapp.GUI.MainWindowController">
+<AnchorPane id="AnchorPane" prefHeight="587.0" prefWidth="887.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="movieapp.GUI.MainWindowController">
     <children>
         <Button fx:id="søge" layoutX="205.0" layoutY="14.0" onAction="#searchForMovie" text="Søge" />
         <Label fx:id="label" layoutX="99.0" layoutY="18.0" minHeight="16" minWidth="69" />
@@ -16,7 +16,7 @@
           <TableColumn fx:id="genre" prefWidth="168.79998779296875" text="Genre" />
         </columns>
       </TableView>
-      <TableView layoutX="14.0" layoutY="67.0" prefHeight="200.0" prefWidth="442.0">
+      <TableView fx:id="filmfelt" layoutX="14.0" layoutY="67.0" prefHeight="200.0" prefWidth="442.0">
         <columns>
           <TableColumn fx:id="title" prefWidth="154.40002822875977" text="Title" />
           <TableColumn fx:id="myRating" prefWidth="88.0" text="My Rating" />
@@ -31,5 +31,6 @@
       <Button fx:id="Reset" layoutX="291.0" layoutY="14.0" onAction="#reset" text="Reset" />
       <Button fx:id="Close" layoutX="821.0" layoutY="548.0" mnemonicParsing="false" onAction="#close" text="Close" />
       <Button fx:id="AddGenre" layoutX="478.0" layoutY="277.0" mnemonicParsing="false" onAction="#addGenre" text="AddGenre" />
+      <Button fx:id="RemoveGenre" layoutX="553.0" layoutY="277.0" mnemonicParsing="false" onAction="#removeGenre" prefHeight="25.0" prefWidth="95.0" text="Remove Genre" />
     </children>
 </AnchorPane>

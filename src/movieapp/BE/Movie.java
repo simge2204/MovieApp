@@ -12,9 +12,11 @@ package movieapp.BE;
 public class Movie
     {
     private int id;
-    private String name;
-    private float IMDBRating;
-    private float personalRating;
+    private String title;
+    private int IMDBRating;
+    private int personalRating;
+    private int lastView;
+    private String path;
     
     public Movie()
         {
@@ -30,13 +32,13 @@ public class Movie
         }
     public String getName()
         {
-        return name;
+        return title;
         }
-    public void setName(String name)
+    public void setName(String title)
         {
-        this.name = name;
+        this.title = title;
         }
-    public float getIMDBRating()
+    public int getIMDBRating()
         {
         return IMDBRating;
         }
@@ -44,12 +46,28 @@ public class Movie
         {
         this.IMDBRating = IMDBRating;
         }
-    public float getPersonalRating()
+    public int getPersonalRating()
         {
         return personalRating;
         }
-    public void setPersonalRating(int PersonalRating)
+    public void setPersonalRating(int personalRating)
         {
-        this.personalRating = PersonalRating;
+        this.personalRating = personalRating;
+        }
+    public int getLastView()
+        {
+        return lastView;
+        }
+    public void setLastView(int lastView)
+        {
+        this.lastView = lastView;
+        }
+    public String getPath()
+        {
+        return path;
+        }
+    public void setPath(String path)
+        {
+        this.path = path;
         }
     }

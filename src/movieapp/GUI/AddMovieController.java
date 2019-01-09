@@ -28,6 +28,7 @@ public class AddMovieController implements Initializable
     private Movie selectedMovie;
     private MovieModel movieModel = new MovieModel();
     private BLLManager bllManager = new BLLManager();
+    MainWindowController mainWindowController = new MainWindowController();
     private int type = 1;
     @FXML
     private Button AddMovieBtn;
@@ -86,6 +87,36 @@ public class AddMovieController implements Initializable
 //        mainWindowController.reload();
         stage.close();
     }
+    
+    public void setMovieModel(MovieModel movieModel)
+        {
+        this.movieModel = movieModel;  
+        
+        }
+    
+    public void setMainWindowController(MainWindowController mainWindowController) 
+        {
+        this.mainWindowController = mainWindowController;
+        }
+
+    public void setEdit() throws SQLException
+        {
+        type = 2;
+        }
+
+    public void setNew()
+        {
+        type = 1;
+        }
+    public void setMovie(Movie selectedMovie)
+        {
+        this.selectedMovie = selectedMovie;
+        TitleField.setText(selectedMovie.getName());
+        ImdbField.setFloat(selectedMovie.getIMDBRating());
+        MyRatingField.setFloat(selectedMovie.getPersonalRating());
+        LastviewField.setString(selectedMovie.getLastView());
+        PathField.setText(selectedMovie.getPath());
+        }
 
     @FXML
     private void clickbtnChoose(ActionEvent event)
@@ -95,6 +126,7 @@ public class AddMovieController implements Initializable
     @FXML
     private void close(ActionEvent event)
     {
-         System.exit(0);
+        Stage stage = (Stage) Close.getScene().getWindow();
+        stage.close();
     }
 }
