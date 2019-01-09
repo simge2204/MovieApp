@@ -22,6 +22,8 @@ public class AddGenreController implements Initializable
 
     @FXML
     private Button Close;
+    @FXML
+    private Button Tilføj;
 
     /**
      * Initializes the controller class.
@@ -36,6 +38,11 @@ public class AddGenreController implements Initializable
     private void close(ActionEvent event)
     {
          System.exit(0);
+    }
+
+    @FXML
+    private void tilføj(ActionEvent event)
+    {
     }
     
 }

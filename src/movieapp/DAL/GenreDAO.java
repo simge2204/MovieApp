@@ -70,7 +70,7 @@ public class GenreDAO
         
     }
     
-    public List<Category> getAllSongs() {
+    public List<Category> getAllGenre() {
         
         List<Category> categorys = new ArrayList();
       

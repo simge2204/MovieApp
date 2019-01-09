@@ -5,7 +5,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="movieapp.GUI.AddMovieController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="movieapp.GUI.AddGenreController">
    <children>
       <Button fx:id="Close" layoutX="509.0" layoutY="351.0" mnemonicParsing="false" onAction="#close" text="Close" />
       <TableView layoutX="210.0" layoutY="84.0" prefHeight="200.0" prefWidth="200.0">

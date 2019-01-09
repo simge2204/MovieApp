@@ -30,20 +30,16 @@ public class AddMovieController implements Initializable
     private BLLManager bllManager = new BLLManager();
     MainWindowController mainWindowController = new MainWindowController();
     private int type = 1;
-    @FXML
     private Button AddMovieBtn;
     @FXML
     private Button Close;
-    @FXML
     private TextField TitleField;
-    @FXML
     private TextField LastviewField;
-    @FXML
     private TextField PathField;
-    @FXML
     private TextField MyRatingField;
-    @FXML
     private TextField ImdbField;
+    @FXML
+    private Button Tilføj;
 
     /**
      * Initializes the controller class.
@@ -56,7 +52,6 @@ public class AddMovieController implements Initializable
          // TODO
     }    
 
-    @FXML
     private void addMovie(ActionEvent event)
     {
         String Title=TitleField.getText();
@@ -118,10 +113,6 @@ public class AddMovieController implements Initializable
         PathField.setText(selectedMovie.getPath());
         }
 
-    @FXML
-    private void clickbtnChoose(ActionEvent event)
-    {
-    }
 
     @FXML
     private void close(ActionEvent event)

@@ -76,8 +76,8 @@ public void editMovie(Movie movie)
             stmt.setString(1, movie.getName());
             stmt.setFloat(2, movie.getIMDBRating());
             stmt.setFloat(3, movie.getPersonalRating());
-//            stmt.setString(4, movie.getLastview());
-//            stmt.setString(5, movie.getPath());
+//            stmt.setString(4, movie.getLastView());
+            stmt.setString(5, movie.getPath());
             stmt.executeUpdate();
         }
         catch (SQLException ex) {
@@ -110,8 +110,8 @@ public void editMovie(Movie movie)
                 currentMovie.setName(rs.getString("Title"));
                 currentMovie.setIMDBRating(rs.getFloat("IMDB"));
                 currentMovie.setPersonalRating(rs.getFloat("Rating"));
-//                currentMovie.set(rs.getString("length"));
-//                currentMovie.setPath(rs.getString("path"));
+//                currentMovie.setLastView(rs.getString("LastView"));
+                currentMovie.setPath(rs.getString("path"));
                 movies.add(currentMovie);
             }
         } 
