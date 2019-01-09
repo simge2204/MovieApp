@@ -13,8 +13,8 @@ public class Movie
     {
     private int id;
     private String title;
-    private int IMDBRating;
-    private int personalRating;
+    private float IMDBRating;
+    private float personalRating;
     private int lastView;
     private String path;
     
@@ -38,19 +38,19 @@ public class Movie
         {
         this.title = title;
         }
-    public int getIMDBRating()
+    public float getIMDBRating()
         {
         return IMDBRating;
         }
-    public void setIMDBRating(int IMDBRating)
+    public void setIMDBRating(float IMDBRating)
         {
         this.IMDBRating = IMDBRating;
         }
-    public int getPersonalRating()
+    public float getPersonalRating()
         {
         return personalRating;
         }
-    public void setPersonalRating(int personalRating)
+    public void setPersonalRating(float personalRating)
         {
         this.personalRating = personalRating;
         }

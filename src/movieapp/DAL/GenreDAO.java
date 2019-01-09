@@ -8,7 +8,10 @@ package movieapp.DAL;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import movieapp.BE.Category;
@@ -67,5 +70,28 @@ public class GenreDAO
         
     }
     
-    
+    public List<Category> getAllSongs() {
+        
+        List<Category> categorys = new ArrayList();
+      
+        try (Connection con = cM.getConnection()){
+            PreparedStatement stmt;
+            stmt = con.prepareStatement("SELECT * FROM Genre");
+            ResultSet rs = stmt.executeQuery();
+            
+            while(rs.next())
+            {
+                Category currentCategory = new Category();
+                currentCategory.setId(rs.getInt("id"));
+                currentCategory.setGenre(rs.getString("name"));
+                categorys.add(currentCategory);
+            }
+        } 
+        catch (SQLException ex) {
+            Logger.getLogger(GenreDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+       
+        return categorys;
+    }
     }

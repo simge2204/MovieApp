@@ -112,9 +112,9 @@ public class AddMovieController implements Initializable
         {
         this.selectedMovie = selectedMovie;
         TitleField.setText(selectedMovie.getName());
-        ImdbField.setFloat(selectedMovie.getIMDBRating());
-        MyRatingField.setFloat(selectedMovie.getPersonalRating());
-        LastviewField.setString(selectedMovie.getLastView());
+        ImdbField.setText(String.valueOf(selectedMovie.getIMDBRating()));
+        MyRatingField.setText(String.valueOf(selectedMovie.getPersonalRating()));
+        LastviewField.setText(String.valueOf(selectedMovie.getLastView()));
         PathField.setText(selectedMovie.getPath());
         }
 
