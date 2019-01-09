@@ -36,8 +36,8 @@ public class MovieDAO
             PreparedStatement stmt;
             stmt = con.prepareStatement("INSERT INTO Song(Title, IMDB, Rating, LastView, Path) VALUES(?,?,?,?,?)");
             stmt.setString(1, title);
-            stmt.setString(2, imdb);
-            stmt.setString(3, rating);
+            stmt.setFloat(2, imdb);
+            stmt.setFloat(3, rating);
             stmt.setString(4, lastview);
             stmt.setString(5, path);
             stmt.executeUpdate();
