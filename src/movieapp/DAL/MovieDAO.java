@@ -100,18 +100,17 @@ public void editMovie(Movie movie)
             PreparedStatement stmt;
             stmt = con.prepareStatement("SELECT * FROM Movie WHERE Title like ?");
             stmt.setString(1, "%"+search+"%");
-            stmt.setString(2, "%"+search+"%");
             ResultSet rs = stmt.executeQuery();
             
             while(rs.next())
             {
                 Movie currentMovie = new Movie();
-                currentMovie.setId(rs.getInt("id"));
+                currentMovie.setId(rs.getInt("Id"));
                 currentMovie.setName(rs.getString("Title"));
                 currentMovie.setIMDBRating(rs.getFloat("IMDB"));
                 currentMovie.setPersonalRating(rs.getFloat("Rating"));
-//                currentMovie.setLastView(rs.getString("LastView"));
-                currentMovie.setPath(rs.getString("path"));
+                currentMovie.setLastView(rs.getString("LastView"));
+                currentMovie.setPath(rs.getString("Path"));
                 movies.add(currentMovie);
             }
         } 

@@ -12,7 +12,6 @@ package movieapp.BE;
 public class Movie
     {
     private int id;
-    public int movies;
     private String title;
     private float IMDBRating;
     private float personalRating;
@@ -26,14 +25,6 @@ public class Movie
     public int getId()
         {
         return id;
-        }
-    public int getMovies()
-        {
-        return movies;
-        }
-    public void setMovies(int movies)
-        {
-        this.movies = movies;
         }
     public void setId(int id)
         {

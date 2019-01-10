@@ -12,7 +12,6 @@ package movieapp.BE;
 public class Category
     {
     private int id;
-    public int genres;
     private String genre;
     
     public Category()
@@ -26,14 +25,6 @@ public class Category
     public void setId(int id)
         {
         this.id = id;
-        }
-    public int getGenres()
-        {
-        return genres;
-        }
-    public void setGenres(int genres)
-        {
-        this.genres = genres;
         }
     public String getGenre()
         {

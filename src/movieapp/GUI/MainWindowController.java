@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.DoubleProperty;
 import javafx.embed.swing.JFXPanel;
@@ -33,6 +35,7 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import movieapp.BE.Category;
 import movieapp.BE.Movie;
 import movieapp.BLL.BLLManager;
 import movieapp.DAL.MovieDAO;
@@ -53,15 +56,15 @@ public class MainWindowController implements Initializable
     @FXML
     private Label label;
     @FXML
-    private TableColumn<?, ?> genre;
+    private TableColumn<Category, String> genre;
     @FXML
-    private TableColumn<?, ?> title;
+    private TableColumn<Movie, String> title;
     @FXML
-    private TableColumn<?, ?> myRating;
+    private TableColumn<Movie, String> myRating;
     @FXML
-    private TableColumn<?, ?> imdbRating;
+    private TableColumn<Movie, String> imdbRating;
     @FXML
-    private TableColumn<?, ?> lastview;
+    private TableColumn<Movie, String> lastview;
     @FXML
     private TextField søgefelt;
     @FXML
@@ -81,7 +84,7 @@ public class MainWindowController implements Initializable
     @FXML
     private Button RemoveGenre;
     @FXML
-    private TableView<?> genrefelt;
+    private TableView<Category> genrefelt;
 
     /**
      * Initializes the controller class.
@@ -92,10 +95,15 @@ public class MainWindowController implements Initializable
     public void initialize(URL url, ResourceBundle rb)
     {
         title.setCellValueFactory(new PropertyValueFactory("title"));
-        imdbRating.setCellValueFactory(new PropertyValueFactory("imdbRating"));
-        myRating.setCellValueFactory(new PropertyValueFactory("myRating"));
-        lastview.setCellValueFactory(new PropertyValueFactory("lastview"));
-        // TODO
+        imdbRating.setCellValueFactory(new PropertyValueFactory("IMDBRating"));
+        myRating.setCellValueFactory(new PropertyValueFactory("personalRating"));
+        lastview.setCellValueFactory(new PropertyValueFactory("lastView"));
+        genre.setCellValueFactory(new PropertyValueFactory("genre"));
+        try {
+            reload();
+        } catch (SQLException ex) {
+            Logger.getLogger(MainWindowController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }    
 
  @FXML
@@ -111,8 +119,8 @@ public class MainWindowController implements Initializable
         movieModel.loadMovies(søgefelt.getText());
         if(selectedMovie!=null)
         {
-            genrefelt.setItems(movieModel.getMovies());
-            categoryModel.loadGenres(selectedMovie);
+            genrefelt.setItems(categoryModel.getGenres());
+            categoryModel.loadGenres();
         }
         filmfelt.setItems(movieModel.getMovies());
         movieModel.loadMovies();
@@ -229,9 +237,9 @@ public class MainWindowController implements Initializable
     }
 
     @FXML
-    private void removeGenre(ActionEvent event)
+    private void removeGenre(ActionEvent event) throws SQLException
         {
-            bllManager.deleteGenre(0);
+            bllManager.deleteGenre(genrefelt.getSelectionModel().getSelectedItem().getId());
         }
     
 }
