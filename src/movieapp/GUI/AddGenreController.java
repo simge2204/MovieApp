@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -37,7 +38,8 @@ public class AddGenreController implements Initializable
     @FXML
     private void close(ActionEvent event)
     {
-         System.exit(0);
+        Stage stage = (Stage) Close.getScene().getWindow();
+        stage.close();
     }
 
     @FXML

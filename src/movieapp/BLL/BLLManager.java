@@ -5,7 +5,10 @@
  */
 package movieapp.BLL;
 
+import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.sql.SQLException;
+import java.util.List;
+import javafx.collections.ObservableList;
 import movieapp.BE.Category;
 import movieapp.DAL.MovieDAO;
 import movieapp.BE.Movie;
@@ -32,6 +35,14 @@ public class BLLManager
         {
         DAO.editMovie(movie);
         }
+    public List<Movie> getAllMovies() throws SQLServerException, SQLException
+        {
+        return DAO.getAllMovies();
+        }
+    public List<Movie> getAllMovies(String Search) throws SQLServerException, SQLException
+        {
+        return DAO.getAllMovies(Search);
+        }
     public void addGenre(String name)
         {
         dao.addGenre(name);
@@ -43,5 +54,9 @@ public class BLLManager
     public void editGenre(Category genre)
         {
         dao.editGenre(genre);
+        }
+    public List<Category> getAllGenre()
+        {
+        return dao.getAllGenre();
         }
 }

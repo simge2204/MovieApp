@@ -15,6 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javax.swing.JFileChooser;
 import java.sql.SQLException;
+import javafx.scene.control.Label;
 import movieapp.BE.Movie;
 import movieapp.BLL.BLLManager;
 
@@ -30,16 +31,22 @@ public class AddMovieController implements Initializable
     private BLLManager bllManager = new BLLManager();
     MainWindowController mainWindowController = new MainWindowController();
     private int type = 1;
+    @FXML
     private Button AddMovieBtn;
     @FXML
     private Button Close;
+    @FXML
     private TextField TitleField;
+    @FXML
     private TextField LastviewField;
+    @FXML
     private TextField PathField;
+    @FXML
     private TextField MyRatingField;
+    @FXML
     private TextField ImdbField;
     @FXML
-    private Button Tilføj;
+    private Label TxtField;
 
     /**
      * Initializes the controller class.
@@ -52,6 +59,7 @@ public class AddMovieController implements Initializable
          // TODO
     }    
 
+    @FXML
     private void addMovie(ActionEvent event)
     {
         String Title=TitleField.getText();
@@ -69,9 +77,10 @@ public class AddMovieController implements Initializable
                 selectedMovie.setName(Title);
                 selectedMovie.setIMDBRating(Imdb);
                 selectedMovie.setPersonalRating(MyRating);
-//                selectedMovie.set(Lastview);
-//                selectedMovie.set(path);
-                bllManager.editMovie(selectedMovie);
+                selectedMovie.setLastView(Lastview);
+                selectedMovie.setPath(path);
+                movieModel.editMovie(selectedMovie);
+//                bllManager.editMovie(selectedMovie);
                 break;
             default:
                 System.out.println("Something went wrong");
@@ -120,4 +129,9 @@ public class AddMovieController implements Initializable
         Stage stage = (Stage) Close.getScene().getWindow();
         stage.close();
     }
+
+    @FXML
+    private void clickbtnChoose(ActionEvent event)
+        {
+        }
 }

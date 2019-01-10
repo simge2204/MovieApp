@@ -18,6 +18,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -25,6 +26,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.StackPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -33,6 +35,7 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import movieapp.BE.Movie;
 import movieapp.BLL.BLLManager;
+import movieapp.DAL.MovieDAO;
 
 /**
  * FXML Controller class
@@ -44,7 +47,6 @@ public class MainWindowController implements Initializable
     private Movie selectedMovie;
     private MovieModel movieModel = new MovieModel();
     private BLLManager bllManager = new BLLManager();
-    MainWindowController mainWindowController = new MainWindowController();
     @FXML
     private Button søge;
     @FXML
@@ -86,6 +88,10 @@ public class MainWindowController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
+        title.setCellValueFactory(new PropertyValueFactory("title"));
+        imdbRating.setCellValueFactory(new PropertyValueFactory("imdbRating"));
+        myRating.setCellValueFactory(new PropertyValueFactory("myRating"));
+        lastview.setCellValueFactory(new PropertyValueFactory("lastview"));
         // TODO
     }    
 
@@ -110,17 +116,30 @@ public class MainWindowController implements Initializable
     }
 
     @FXML
-    private void removeMovie(ActionEvent event)
+    private void removeMovie(ActionEvent event) throws IOException, SQLException
     {
+//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainWindow.fxml"));
+//        Parent root4 = (Parent) fxmlLoader.load();
+//        Stage stage = new Stage();
+//        movieapp.GUI.MainWindowController MWController = fxmlLoader.getController();
+//        MWController.setMovieModel(movieModel);
+//        MWController.setMainWindowController(this);
+//        selectedMovie = filmfelt.getSelectionModel().getSelectedItem();
+//        MWController.setMovie(selectedMovie);
+//        MWController.setPlLabel(selectedPlaylist);
+//        stage.setTitle("DeletePlaylist");
+//        stage.setScene(new Scene(root4));
+//        stage.show();
+        movieModel.getMovies().remove(filmfelt.getSelectionModel().getSelectedItem());
     }
 
     @FXML
     private void editMovie(ActionEvent event) throws IOException, SQLException
     {
-    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AddMovie.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AddMovie.fxml"));
         Parent root2 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
-        movieapp.GUI.AddMovieController cpController=fxmlLoader.getController();
+        movieapp.GUI.AddMovieController cpController = fxmlLoader.getController();
         cpController.setMovieModel(movieModel);
         cpController.setMainWindowController(this);
         cpController.setEdit();
@@ -159,9 +178,11 @@ public class MainWindowController implements Initializable
         root.getChildren().add(viewer);
 
         VFXPanel.setScene(scene);
-        //player.play();
-        filmfelt.setLayout(new BorderLayout());
-        filmfelt.add(VFXPanel, BorderLayout.CENTER);
+        player.play();
+        root = new StackPane();
+        root.setAlignment(Pos.CENTER);
+//        filmfelt.setLayout(new BorderLayout());
+//        filmfelt.add(VFXPanel, BorderLayout.CENTER);
         }
 
 

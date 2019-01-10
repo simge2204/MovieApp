@@ -6,6 +6,9 @@
 package movieapp.GUI;
 
 import java.sql.SQLException;
+import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import movieapp.BE.Category;
 import movieapp.BLL.BLLManager;
 
@@ -16,7 +19,19 @@ import movieapp.BLL.BLLManager;
 public class CategoryModel
     {
     private BLLManager bllManager = new BLLManager();
+    private ObservableList<Category> genres = FXCollections.observableArrayList();
     
+    public ObservableList<Category> getGenres()
+        {
+        return genres;
+        }
+    public void loadGenres() throws SQLException
+    {
+        List<Category> loadedGenres = bllManager.getAllGenre();
+
+        genres.clear();
+        genres.addAll(loadedGenres);
+    }
     public void addGenre(String name)
         {
         bllManager.addGenre(name);
