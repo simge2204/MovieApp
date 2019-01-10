@@ -47,6 +47,7 @@ public class MainWindowController implements Initializable
     private Movie selectedMovie;
     private MovieModel movieModel = new MovieModel();
     private BLLManager bllManager = new BLLManager();
+    private CategoryModel categoryModel = new CategoryModel(); 
     @FXML
     private Button søge;
     @FXML
@@ -79,6 +80,8 @@ public class MainWindowController implements Initializable
     private TableView<Movie> filmfelt;
     @FXML
     private Button RemoveGenre;
+    @FXML
+    private TableView<?> genrefelt;
 
     /**
      * Initializes the controller class.
@@ -95,11 +98,27 @@ public class MainWindowController implements Initializable
         // TODO
     }    
 
-    @FXML
-    private void searchForMovie(ActionEvent event)
+ @FXML
+    private void searchForMovie(ActionEvent event)throws SQLException 
     {
+        reload();
     }
-
+    
+    public void reload() throws SQLException 
+    {
+        selectedMovie = filmfelt.getSelectionModel().getSelectedItem();
+        filmfelt.setItems(movieModel.getMovies());
+        movieModel.loadMovies(søgefelt.getText());
+        if(selectedMovie!=null)
+        {
+            genrefelt.setItems(movieModel.getMovies());
+            categoryModel.loadGenres(selectedMovie);
+        }
+        filmfelt.setItems(movieModel.getMovies());
+        movieModel.loadMovies();
+        filmfelt.getSelectionModel().select(selectedMovie);
+    }
+    
     @FXML
     private void addMovie(ActionEvent event) throws IOException
     {
@@ -212,6 +231,7 @@ public class MainWindowController implements Initializable
     @FXML
     private void removeGenre(ActionEvent event)
         {
+            bllManager.deleteGenre(0);
         }
     
 }
