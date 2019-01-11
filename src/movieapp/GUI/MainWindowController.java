@@ -50,7 +50,8 @@ public class MainWindowController implements Initializable
     private Movie selectedMovie;
     private MovieModel movieModel = new MovieModel();
     private BLLManager bllManager = new BLLManager();
-    private CategoryModel categoryModel = new CategoryModel(); 
+    private CategoryModel categoryModel = new CategoryModel();
+    private MovieDAO movieDAO = new MovieDAO();
     @FXML
     private Button søge;
     @FXML
@@ -145,19 +146,8 @@ public class MainWindowController implements Initializable
     @FXML
     private void removeMovie(ActionEvent event) throws IOException, SQLException
     {
-//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainWindow.fxml"));
-//        Parent root4 = (Parent) fxmlLoader.load();
-//        Stage stage = new Stage();
-//        movieapp.GUI.MainWindowController MWController = fxmlLoader.getController();
-//        MWController.setMovieModel(movieModel);
-//        MWController.setMainWindowController(this);
-//        selectedMovie = filmfelt.getSelectionModel().getSelectedItem();
-//        MWController.setMovie(selectedMovie);
-//        MWController.setPlLabel(selectedPlaylist);
-//        stage.setTitle("DeletePlaylist");
-//        stage.setScene(new Scene(root4));
-//        stage.show();
-        movieModel.getMovies().remove(filmfelt.getSelectionModel().getSelectedItem());
+        movieDAO.deleteMovie(selectedMovie.getId());
+        reload();
     }
 
     @FXML
