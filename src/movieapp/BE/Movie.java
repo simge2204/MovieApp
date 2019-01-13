@@ -12,7 +12,7 @@ package movieapp.BE;
 public class Movie
     {
     private int id;
-    private String title;
+    private String name;
     private float IMDBRating;
     private float personalRating;
     private String lastView;
@@ -32,11 +32,11 @@ public class Movie
         }
     public String getName()
         {
-        return title;
+        return name;
         }
-    public void setName(String title)
+    public void setName(String name)
         {
-        this.title = title;
+        this.name = name;
         }
     public float getIMDBRating()
         {

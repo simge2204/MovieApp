@@ -95,7 +95,7 @@ public class MainWindowController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
-        title.setCellValueFactory(new PropertyValueFactory("title"));
+        title.setCellValueFactory(new PropertyValueFactory("name"));
         imdbRating.setCellValueFactory(new PropertyValueFactory("IMDBRating"));
         myRating.setCellValueFactory(new PropertyValueFactory("personalRating"));
         lastview.setCellValueFactory(new PropertyValueFactory("lastView"));
@@ -118,11 +118,11 @@ public class MainWindowController implements Initializable
         selectedMovie = filmfelt.getSelectionModel().getSelectedItem();
         filmfelt.setItems(movieModel.getMovies());
         movieModel.loadMovies(søgefelt.getText());
-        if(selectedMovie!=null)
-        {
+        //if(selectedMovie!=null)
+        //{
             genrefelt.setItems(categoryModel.getGenres());
             categoryModel.loadGenres();
-        }
+        //}
         filmfelt.setItems(movieModel.getMovies());
         movieModel.loadMovies();
         filmfelt.getSelectionModel().select(selectedMovie);
