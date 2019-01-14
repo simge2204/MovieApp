@@ -33,7 +33,7 @@ public class MovieDAO
      * @param path
      * @throws com.microsoft.sqlserver.jdbc.SQLServerException
      */
-    public void addMovie(String title, float imdb, float rating, String lastview, String path)
+    public void addMovie(String title, float imdb, float rating, String lastview, String path) throws SQLServerException, SQLException
         {
             try (Connection con = cM.getConnection()){
             PreparedStatement stmt;

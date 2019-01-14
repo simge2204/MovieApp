@@ -23,7 +23,7 @@ public class BLLManager
     MovieDAO DAO = new MovieDAO();
     GenreDAO dao = new GenreDAO();
     
-    public void addMovie(String title, float imdb, float rating, String lastview, String path)
+    public void addMovie(String title, float imdb, float rating, String lastview, String path) throws SQLException
         {
         DAO.addMovie(title, imdb, rating, lastview, path);
         }

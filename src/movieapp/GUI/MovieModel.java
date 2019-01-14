@@ -40,7 +40,7 @@ public class MovieModel
         movies.clear();
         movies.addAll(loadedMovies);
     }
-    public void addMovie(String title, float imdb, float rating, String lastview, String path)
+    public void addMovie(String title, float imdb, float rating, String lastview, String path) throws SQLException
         {
         bllManager.addMovie(title, imdb, rating, lastview, path);
         }

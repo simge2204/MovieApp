@@ -60,7 +60,7 @@ public class AddMovieController implements Initializable
     }    
 
     @FXML
-    private void addMovie(ActionEvent event)
+    private void addMovie(ActionEvent event) throws SQLException 
     {
         String Title=TitleField.getText();
         Float Imdb=Float.parseFloat(ImdbField.getText());
@@ -88,7 +88,7 @@ public class AddMovieController implements Initializable
                 break;
        }
         
-//        mainWindowController.reload();
+        mainWindowController.reload();
         stage.close();
     }
     

@@ -86,6 +86,10 @@ public class MainWindowController implements Initializable
     private Button RemoveGenre;
     @FXML
     private TableView<Category> genrefelt;
+    @FXML
+    private Button play;
+    @FXML
+    private Button genreSøge;
 
     /**
      * Initializes the controller class.
@@ -167,6 +171,7 @@ public class MainWindowController implements Initializable
         stage.show();
     }
     
+    @FXML
     private void playMovie()
         {
         final JFXPanel VFXPanel = new JFXPanel();
@@ -231,5 +236,10 @@ public class MainWindowController implements Initializable
         {
             bllManager.deleteGenre(genrefelt.getSelectionModel().getSelectedItem().getId());
         }
+
+    @FXML
+    private void genreSøge(ActionEvent event)
+    {
+    }
     
 }
