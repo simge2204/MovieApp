@@ -133,5 +133,15 @@ public class AddMovieController implements Initializable
     @FXML
     private void clickbtnChoose(ActionEvent event)
         {
+            JFileChooser c = new JFileChooser();
+            c.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+            int rVal = c.showSaveDialog(c);
+            if (rVal == JFileChooser.APPROVE_OPTION) {
+                PathField.setText("");
+                PathField.setText(c.getSelectedFile().toString());
+            }
+            if (rVal == JFileChooser.CANCEL_OPTION) {
+                PathField.setText("");
+            }
         }
 }
