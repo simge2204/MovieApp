@@ -43,9 +43,9 @@ public class BLLManager
         {
         return DAO.getAllMovies(Search);
         }
-    public void addGenre(String name)
+    public void newGenre(String name)
         {
-        dao.addGenre(name);
+        dao.newGenre(name);
         }
     public void deleteGenre(int id) throws SQLException
         {

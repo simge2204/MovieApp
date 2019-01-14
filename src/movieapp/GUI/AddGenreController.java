@@ -12,6 +12,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import movieapp.BE.Category;
+import movieapp.BE.Movie;
 
 /**
  * FXML Controller class
@@ -20,7 +22,10 @@ import javafx.stage.Stage;
  */
 public class AddGenreController implements Initializable
 {
-
+    movieapp.GUI.CategoryModel categoryModel;
+    movieapp.GUI.MainWindowController mainWindowController;
+    private Movie selectedMovie;
+    private Category selectedGenre;
     @FXML
     private Button Close;
     @FXML
@@ -45,6 +50,16 @@ public class AddGenreController implements Initializable
     @FXML
     private void tilføj(ActionEvent event)
     {
+        
     }
     
+    public void setMovie(Movie selectedMovie)
+    {
+        this.selectedMovie = selectedMovie;
+    }
+    
+    public void setGenre(Category selectedGenre)
+    {
+        this.selectedGenre = selectedGenre;
+    }
 }

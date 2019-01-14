@@ -32,9 +32,9 @@ public class CategoryModel
         genres.clear();
         genres.addAll(loadedGenres);
     }
-    public void addGenre(String name)
+    public void newGenre(String name)
         {
-        bllManager.addGenre(name);
+        bllManager.newGenre(name);
         }
     public void deleteGenre(int id) throws SQLException
         {

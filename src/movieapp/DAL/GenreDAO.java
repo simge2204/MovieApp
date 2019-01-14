@@ -25,7 +25,7 @@ public class GenreDAO
     ConnectionManager cM = new ConnectionManager();
     
     
-    public void addGenre(String name)
+    public void newGenre(String name)
         {
             try (Connection con = cM.getConnection()){
             PreparedStatement stmt;
