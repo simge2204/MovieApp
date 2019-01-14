@@ -90,6 +90,10 @@ public class MainWindowController implements Initializable
     private Button play;
     @FXML
     private Button genreSøge;
+    @FXML
+    private Button NyGenre;
+    @FXML
+    private Label genreController;
 
     /**
      * Initializes the controller class.
@@ -239,6 +243,11 @@ public class MainWindowController implements Initializable
 
     @FXML
     private void genreSøge(ActionEvent event)
+    {
+    }
+
+    @FXML
+    private void NyGenre(ActionEvent event)
     {
     }
     

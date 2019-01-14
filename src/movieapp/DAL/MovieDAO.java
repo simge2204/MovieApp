@@ -37,7 +37,7 @@ public class MovieDAO
         {
             try (Connection con = cM.getConnection()){
             PreparedStatement stmt;
-            stmt = con.prepareStatement("INSERT INTO Song(Title, IMDB, Rating, LastView, Path) VALUES(?,?,?,?,?)");
+            stmt = con.prepareStatement("INSERT INTO Movie(Title, IMDB, Rating, LastView, Path) VALUES(?,?,?,?,?)");
             stmt.setString(1, title);
             stmt.setFloat(2, imdb);
             stmt.setFloat(3, rating);
@@ -71,7 +71,7 @@ public void editMovie(Movie movie)
     {
         try (Connection con = cM.getConnection()) 
     {
-            PreparedStatement stmt = con.prepareStatement("UPDATE Song SET Title=?, IMDB=?, Rating=?, LastView=?, Path=? WHERE Id=?");
+            PreparedStatement stmt = con.prepareStatement("UPDATE Movie SET Title=?, IMDB=?, Rating=?, LastView=?, Path=? WHERE Id=?");
             stmt.setInt(6, movie.getId());
             stmt.setString(1, movie.getName());
             stmt.setFloat(2, movie.getIMDBRating());
