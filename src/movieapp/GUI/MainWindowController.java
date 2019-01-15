@@ -108,7 +108,7 @@ public class MainWindowController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
-        JOptionPane.showMessageDialog(frame, "Remember to delete Movies you haven't watch in a longe time, especially those with a low score to safe space on youre PC.");
+        JOptionPane.showMessageDialog(frame, "Remember to delete Movies you haven't watch in a long time, especially those with a low score to safe space on your PC.");
         title.setCellValueFactory(new PropertyValueFactory("name"));
         imdbRating.setCellValueFactory(new PropertyValueFactory("IMDBRating"));
         myRating.setCellValueFactory(new PropertyValueFactory("personalRating"));
@@ -182,39 +182,19 @@ public class MainWindowController implements Initializable
     }
     
     @FXML
-    private void playMovie()
+    private void playMovie() throws IOException
         {
-        final JFXPanel VFXPanel = new JFXPanel();
-
-        File video_source = new File("tutorial.mp4");
+        File video_source = new File("");
         Media m = new Media(video_source.toURI().toString());
         MediaPlayer player = new MediaPlayer(m);
         MediaView viewer = new MediaView(player);
-
-        StackPane root = new StackPane();
-        Scene scene = new Scene(root);
-
-        // center video position
-        javafx.geometry.Rectangle2D screen = Screen.getPrimary().getVisualBounds();
-        viewer.setX((screen.getWidth() - filmfelt.getWidth()) / 2);
-        viewer.setY((screen.getHeight() - filmfelt.getHeight()) / 2);
-
-        // resize video based on screen size
-        DoubleProperty width = viewer.fitWidthProperty();
-        DoubleProperty height = viewer.fitHeightProperty();
-        width.bind(Bindings.selectDouble(viewer.sceneProperty(), "width"));
-        height.bind(Bindings.selectDouble(viewer.sceneProperty(), "height"));
-        viewer.setPreserveRatio(true);
-
-        // add video to stackpane
-        root.getChildren().add(viewer);
-
-        VFXPanel.setScene(scene);
-        player.play();
-        root = new StackPane();
-        root.setAlignment(Pos.CENTER);
-//        filmfelt.setLayout(new BorderLayout());
-//        filmfelt.add(VFXPanel, BorderLayout.CENTER);
+        selectedMovie = filmfelt.getSelectionModel().getSelectedItem();
+        Runtime.getRuntime().exec("cmd /c start/wmplayer.exe");
+        Runtime.getRuntime().exec("cmd /c start/ file.bat");
+        Process p = Runtime.getRuntime().exec("cmd /c start/Program Files/Windows Media Player/wmplayer.exe");
+//        BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream()));
+//        player.play();
+        viewer.getMediaPlayer().play();
         }
 
 
