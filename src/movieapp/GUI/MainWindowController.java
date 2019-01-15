@@ -97,6 +97,8 @@ public class MainWindowController implements Initializable
     private Button NyGenre;
     @FXML
     private Label genreController;
+    @FXML
+    private Button DeleteGenreBtn;
 
     /**
      * Initializes the controller class.
@@ -230,19 +232,37 @@ public class MainWindowController implements Initializable
     @FXML
     private void addGenre(ActionEvent event) throws IOException
     {
+        Movie selectedMovie = filmfelt.getSelectionModel().getSelectedItem();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AddGenre.fxml"));
         Parent root1 = (Parent)fxmlLoader.load();
         Stage stage = new Stage();
-        movieapp.GUI.AddGenreController cpController = fxmlLoader.getController();
+        movieapp.GUI.AddGenreController agController = fxmlLoader.getController();
+        agController.setMainWindowController(this);
+        agController.setCategoryModel(categoryModel);
+        agController.setMovie(selectedMovie);
+        agController.setAdd();
+        agController.getGenres(selectedMovie);
         stage.setTitle("Add Genre To Movie");
         stage.setScene(new Scene(root1));
         stage.show();
     }
 
     @FXML
-    private void removeGenre(ActionEvent event) throws SQLException
+    private void removeGenre(ActionEvent event) throws IOException
         {
-            bllManager.deleteGenre(genrefelt.getSelectionModel().getSelectedItem().getId());
+            Movie selectedMovie = filmfelt.getSelectionModel().getSelectedItem();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AddGenre.fxml"));
+        Parent root1 = (Parent)fxmlLoader.load();
+        Stage stage = new Stage();
+        movieapp.GUI.AddGenreController agController = fxmlLoader.getController();
+        agController.setMainWindowController(this);
+        agController.setCategoryModel(categoryModel);
+        agController.setMovie(selectedMovie);
+        agController.setRemove();
+        agController.getGenres(selectedMovie);
+        stage.setTitle("Remove Genre From Movie");
+        stage.setScene(new Scene(root1));
+        stage.show();
         }
 
     @FXML
@@ -280,6 +300,11 @@ public class MainWindowController implements Initializable
         stage.setTitle("Edit Genre");
         stage.setScene(new Scene(root1));
         stage.show();
+    }
+
+    @FXML
+    private void deleteGenre(ActionEvent event) throws SQLException {
+        bllManager.deleteGenre(genrefelt.getSelectionModel().getSelectedItem().getId());
     }
     
 }

@@ -27,20 +27,21 @@
       </TableView>
       <TextField fx:id="søgefelt" layoutX="11.0" layoutY="11.0" />
       <Button fx:id="AddMovie" layoutX="14.0" layoutY="256.0" mnemonicParsing="false" onAction="#addMovie" text="Add Movie" />
-      <Button fx:id="RemoveMovie" layoutX="134.0" layoutY="256.0" mnemonicParsing="false" onAction="#removeMovie" text="Remove Movie" />
-      <Button fx:id="EditMovie" layoutX="268.0" layoutY="256.0" mnemonicParsing="false" onAction="#editMovie" text="Edit Movie" />
+      <Button fx:id="RemoveMovie" layoutX="117.0" layoutY="256.0" mnemonicParsing="false" onAction="#removeMovie" text="Remove Movie" />
+      <Button fx:id="EditMovie" layoutX="240.0" layoutY="256.0" mnemonicParsing="false" onAction="#editMovie" text="Edit Movie" />
       <Button fx:id="Reset" layoutX="282.0" layoutY="10.0" onAction="#reset" text="Reset" />
       <Button fx:id="Close" layoutX="684.0" layoutY="256.0" mnemonicParsing="false" onAction="#close" text="Close" />
-      <Button fx:id="AddGenre" layoutX="373.0" layoutY="256.0" mnemonicParsing="false" onAction="#addGenre" text="AddGenre" />
-      <Button fx:id="RemoveGenre" layoutX="751.0" layoutY="46.0" mnemonicParsing="false" onAction="#removeGenre" prefHeight="25.0" prefWidth="95.0" text="Remove Genre" />
+      <Button fx:id="AddGenre" layoutX="338.0" layoutY="256.0" mnemonicParsing="false" onAction="#addGenre" text="AddGenre" />
+      <Button fx:id="RemoveGenre" layoutX="441.0" layoutY="256.0" mnemonicParsing="false" onAction="#removeGenre" prefHeight="25.0" prefWidth="95.0" text="Remove Genre" />
       <Button fx:id="play" layoutX="364.0" layoutY="10.0" mnemonicParsing="false" onAction="#playMovie" text="Play" />
       <Button fx:id="genreSøge" layoutX="552.0" layoutY="9.0" mnemonicParsing="false" onAction="#genreSøge" prefHeight="26.0" prefWidth="170.0" text="Genre Søge" />
-      <Button fx:id="NyGenre" layoutX="755.0" layoutY="146.0" mnemonicParsing="false" onAction="#NyGenre" text="NyGenre" />
+      <Button fx:id="NyGenre" layoutX="755.0" layoutY="146.0" mnemonicParsing="false" onAction="#NyGenre" prefHeight="25.0" prefWidth="88.0" text="Ny Genre" />
       <Button layoutX="755.0" layoutY="95.0" mnemonicParsing="false" onAction="#editGenre" prefHeight="26.0" prefWidth="88.0" text="Edit Genre" />
       <Label fx:id="genreController" layoutX="744.0" layoutY="11.0" text="Genre Controller">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
+      <Button fx:id="DeleteGenreBtn" layoutX="755.0" layoutY="46.0" mnemonicParsing="false" onAction="#deleteGenre" prefHeight="25.0" prefWidth="88.0" text="Delete Genre" />
     </children>
 </AnchorPane>

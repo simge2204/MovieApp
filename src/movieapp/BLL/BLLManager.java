@@ -59,4 +59,16 @@ public class BLLManager
         {
         return dao.getAllGenre();
         }
+    public List<Category> getGenresOnMovie(Movie selectedMovie)
+    {
+        return dao.getGenresOnMovie(selectedMovie);
+    }
+    public void addGenreToMovie(Category selectedGenre, Movie selectedMovie)
+    {
+        dao.addGenreToMovie(selectedGenre, selectedMovie);
+    }
+    public void removeGenreFromMovie(Category selectedGenre, Movie selectedMovie)
+    {
+        dao.RemoveGenreFromMovie(selectedGenre, selectedMovie);
+    }
 }

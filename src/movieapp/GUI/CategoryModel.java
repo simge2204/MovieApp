@@ -10,6 +10,7 @@ import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import movieapp.BE.Category;
+import movieapp.BE.Movie;
 import movieapp.BLL.BLLManager;
 
 /**
@@ -20,10 +21,14 @@ public class CategoryModel
     {
     private BLLManager bllManager = new BLLManager();
     private ObservableList<Category> genres = FXCollections.observableArrayList();
-    
+    private ObservableList<Category> genresOnMovie = FXCollections.observableArrayList();
     public ObservableList<Category> getGenres()
         {
         return genres;
+        }
+    public ObservableList<Category> getGenresOnMovie()
+        {
+        return genresOnMovie;
         }
     public void loadGenres() throws SQLException
     {
@@ -43,5 +48,20 @@ public class CategoryModel
     public void editGenre(Category genre)
         {
         bllManager.editGenre(genre);
+        }
+    public void getGenresOnMovie(Movie selectedMovie)
+        {
+        List<Category> loadedGenres = bllManager.getGenresOnMovie(selectedMovie);
+
+        genresOnMovie.clear();
+        genresOnMovie.addAll(loadedGenres);
+        }
+    public void addGenreToMovie(Category selectedGenre, Movie selectedMovie)
+        {
+        bllManager.addGenreToMovie(selectedGenre, selectedMovie);
+        }
+    public void removeGenreFromMovie(Category selectedGenre, Movie selectedMovie)
+        {
+        bllManager.removeGenreFromMovie(selectedGenre, selectedMovie);
         }
     }

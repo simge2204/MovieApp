@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import movieapp.BE.Category;
+import movieapp.BE.Movie;
 
 /**
  *
@@ -94,4 +95,60 @@ public class GenreDAO
        
         return categorys;
     }
+    
+    public List<Category> getGenresOnMovie(Movie selectedMovie) {
+        
+        List<Category> categorys = new ArrayList();
+      
+        try (Connection con = cM.getConnection()){
+            PreparedStatement stmt;
+            stmt = con.prepareStatement("SELECT Genre.Id, Genre.Name FROM Genre INNER JOIN Relations on Genre.Id = Relations.GenreId WHERE Relations.MovieId=?;");
+            stmt.setInt(1, selectedMovie.getId());
+            ResultSet rs = stmt.executeQuery();
+            
+            while(rs.next())
+            {
+                Category currentCategory = new Category();
+                currentCategory.setId(rs.getInt("id"));
+                currentCategory.setGenre(rs.getString("name"));
+                categorys.add(currentCategory);
+            }
+        } 
+        catch (SQLException ex) {
+            Logger.getLogger(GenreDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+       
+        return categorys;
+    }
+    
+    public void addGenreToMovie(Category selectedGenre, Movie selectedMovie)
+        {
+            try (Connection con = cM.getConnection()){
+            PreparedStatement stmt;
+            stmt = con.prepareStatement("INSERT INTO Relations(GenreId, MovieId) VALUES(?,?)");
+            stmt.setInt(1, selectedGenre.getId());
+            stmt.setInt(2, selectedMovie.getId());
+            stmt.executeUpdate();
+        }
+            catch (SQLException ex) 
+        {
+            Logger.getLogger(GenreDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        }
+    
+    public void RemoveGenreFromMovie(Category selectedGenre, Movie selectedMovie)
+        {
+            try (Connection con = cM.getConnection()){
+            PreparedStatement stmt;
+            stmt = con.prepareStatement("DELETE FROM Relations WHERE GenreId=? AND MovieId=?");
+            stmt.setInt(1, selectedGenre.getId());
+            stmt.setInt(2, selectedMovie.getId());
+            stmt.executeUpdate();
+        }
+            catch (SQLException ex) 
+        {
+            Logger.getLogger(GenreDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        }
     }
