@@ -6,6 +6,7 @@
 package movieapp.GUI;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -35,6 +36,7 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 import movieapp.BE.Category;
 import movieapp.BE.Movie;
 import movieapp.BLL.BLLManager;
@@ -52,6 +54,7 @@ public class MainWindowController implements Initializable
     private BLLManager bllManager = new BLLManager();
     private CategoryModel categoryModel = new CategoryModel();
     private MovieDAO movieDAO = new MovieDAO();
+    private Component frame;
     @FXML
     private Button søge;
     @FXML
@@ -103,6 +106,7 @@ public class MainWindowController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
+        JOptionPane.showMessageDialog(frame, "Remember to delete Movies you haven't watch in a longe time, especially does with a low score to safe space on you PC.");
         title.setCellValueFactory(new PropertyValueFactory("name"));
         imdbRating.setCellValueFactory(new PropertyValueFactory("IMDBRating"));
         myRating.setCellValueFactory(new PropertyValueFactory("personalRating"));
