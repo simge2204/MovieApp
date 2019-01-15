@@ -106,7 +106,7 @@ public class MainWindowController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
-        JOptionPane.showMessageDialog(frame, "Remember to delete Movies you haven't watch in a longe time, especially does with a low score to safe space on you PC.");
+        JOptionPane.showMessageDialog(frame, "Remember to delete Movies you haven't watch in a longe time, especially those with a low score to safe space on youre PC.");
         title.setCellValueFactory(new PropertyValueFactory("name"));
         imdbRating.setCellValueFactory(new PropertyValueFactory("IMDBRating"));
         myRating.setCellValueFactory(new PropertyValueFactory("personalRating"));
