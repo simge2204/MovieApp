@@ -230,7 +230,7 @@ public class MainWindowController implements Initializable
         Parent root1 = (Parent)fxmlLoader.load();
         Stage stage = new Stage();
         movieapp.GUI.AddGenreController cpController = fxmlLoader.getController();
-        stage.setTitle("AddGenre");
+        stage.setTitle("Add Genre To Movie");
         stage.setScene(new Scene(root1));
         stage.show();
     }
@@ -247,8 +247,35 @@ public class MainWindowController implements Initializable
     }
 
     @FXML
-    private void NyGenre(ActionEvent event)
+    private void NyGenre(ActionEvent event) throws IOException
     {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("NewEditGenre.fxml"));
+        Parent root1 = (Parent)fxmlLoader.load();
+        Stage stage = new Stage();
+        movieapp.GUI.NewEditGenreController negController = fxmlLoader.getController();
+        negController.setMainWindowController(this);
+        negController.setCategoryModel(categoryModel);
+        negController.setNew();
+        stage.setTitle("New Genre");
+        stage.setScene(new Scene(root1));
+        stage.show();
+    }
+    
+    @FXML
+    private void editGenre(ActionEvent event) throws IOException
+    {
+        Category selectedGenre = genrefelt.getSelectionModel().getSelectedItem();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("NewEditGenre.fxml"));
+        Parent root1 = (Parent)fxmlLoader.load();
+        Stage stage = new Stage();
+        movieapp.GUI.NewEditGenreController negController = fxmlLoader.getController();
+        negController.setMainWindowController(this);
+        negController.setCategoryModel(categoryModel);
+        negController.setEdit(selectedGenre);
+        negController.setGenre(selectedGenre);
+        stage.setTitle("Edit Genre");
+        stage.setScene(new Scene(root1));
+        stage.show();
     }
     
 }

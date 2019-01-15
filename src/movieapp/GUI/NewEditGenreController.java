@@ -6,6 +6,7 @@
 package movieapp.GUI;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -39,16 +40,18 @@ public class NewEditGenreController implements Initializable {
     }    
 
     @FXML
-    private void newEditGenre(ActionEvent event) {
+    private void newEditGenre(ActionEvent event) throws SQLException {
         Stage stage = (Stage) NewEditBtn.getScene().getWindow();
         switch(type) {
             case 1:
                 categoryModel.newGenre(genreName.getText());
+                mainWindowController.reload();
                 stage.close();
                 break;
             case 2:
                 selectedGenre.setGenre(genreName.getText());
                 categoryModel.editGenre(selectedGenre);
+                mainWindowController.reload();
                 stage.close();
                 break;
             default:
@@ -68,8 +71,9 @@ public class NewEditGenreController implements Initializable {
         this.mainWindowController = mainWindowControler;
     }
     
-    public void setEdit() {
+    public void setEdit(Category selectedGenre) {
         type = 2;
+        genreName.setText(selectedGenre.getGenre());
     }
     
     public void setNew() {
