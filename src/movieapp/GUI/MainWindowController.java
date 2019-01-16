@@ -97,6 +97,10 @@ public class MainWindowController implements Initializable
     private Label genreController;
     @FXML
     private Button DeleteGenreBtn;
+    @FXML
+    private Button IMDBsøg;
+    @FXML
+    private TextField IMDBsøgefelt;
 
     /**
      * Initializes the controller class.
@@ -320,5 +324,11 @@ public class MainWindowController implements Initializable
         bllManager.deleteGenre(genrefelt.getSelectionModel().getSelectedItem().getId());
         reload();
     }
+
+    @FXML
+    private void IMDBsøg(ActionEvent event) throws SQLException
+        {
+        movieModel.loadMovies(IMDBsøgefelt.getText(0, 10));
+        }
     
 }
