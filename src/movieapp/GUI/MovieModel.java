@@ -53,24 +53,25 @@ public class MovieModel
         {
         bllManager.editMovie(movie);
         }
-    public void addRating()
-        {
+    public void loadMoviesFromGenre(Category selectedGenre)
+    {
+        List<Movie> loadedMovies = bllManager.getMoviesFromCategory(selectedGenre);
         
-        }
-    public void editRating()
-        {
+        movies.clear();
+        movies.addAll(loadedMovies);
+    }
+    public void loadMoviesFromGenre(Category selectedGenre1, Category selectedGenre2)
+    {
+        List<Movie> loadedMovies = bllManager.getMoviesFromCategory(selectedGenre1, selectedGenre2);
         
-        }
-    public List<Movie> getMoviesFromCategory(Category selectedGenre)
-    {
-        return bllManager.getMoviesFromCategory(selectedGenre);
+        movies.clear();
+        movies.addAll(loadedMovies);
     }
-    public List<Movie> getMoviesFromCategory(Category selectedGenre1, Category selectedGenre2)
+    public void loadMoviesFromGenre(Category selectedGenre3, Category selectedGenre4, Category selectedGenre5) throws SQLException
     {
-        return bllManager.getMoviesFromCategory(selectedGenre1, selectedGenre2);
-    }
-    public List<Movie> getMoviesFromCategory(Category selectedGenre3, Category selectedGenre4, Category selectedGenre5) throws SQLException
-    {
-        return bllManager.getMoviesFromCategory(selectedGenre3, selectedGenre4, selectedGenre5);
+        List<Movie> loadedMovies = bllManager.getMoviesFromCategory(selectedGenre3, selectedGenre4, selectedGenre5);
+        
+        movies.clear();
+        movies.addAll(loadedMovies);
     }
     }

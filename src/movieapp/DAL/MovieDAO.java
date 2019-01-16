@@ -139,7 +139,7 @@ public void editMovie(Movie movie)
            while(rs.next()) {
                Movie currentMovie = new Movie();
                currentMovie.setId(rs.getInt("Id"));
-               currentMovie.setName(rs.getString("Name"));
+               currentMovie.setName(rs.getString("Title"));
                currentMovie.setPersonalRating(rs.getFloat("Rating"));
                currentMovie.setIMDBRating(rs.getFloat("IMDB"));
                currentMovie.setPath(rs.getString("Path"));
@@ -169,7 +169,7 @@ public void editMovie(Movie movie)
            while(rs.next()) {
                Movie currentMovie = new Movie();
                currentMovie.setId(rs.getInt("Id"));
-               currentMovie.setName(rs.getString("Name"));
+               currentMovie.setName(rs.getString("Title"));
                currentMovie.setPersonalRating(rs.getFloat("Rating"));
                currentMovie.setIMDBRating(rs.getFloat("IMDB"));
                currentMovie.setPath(rs.getString("Path"));
@@ -200,7 +200,7 @@ public void editMovie(Movie movie)
            while(rs.next()) {
                Movie currentMovie = new Movie();
                currentMovie.setId(rs.getInt("Id"));
-               currentMovie.setName(rs.getString("Name"));
+               currentMovie.setName(rs.getString("Title"));
                currentMovie.setPersonalRating(rs.getFloat("Rating"));
                currentMovie.setIMDBRating(rs.getFloat("IMDB"));
                currentMovie.setPath(rs.getString("Path"));

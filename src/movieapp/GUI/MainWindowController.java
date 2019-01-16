@@ -20,12 +20,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
@@ -244,8 +247,40 @@ public class MainWindowController implements Initializable
         }
 
     @FXML
-    private void genreSøge(ActionEvent event)
+    private void genreSøge(ActionEvent event) throws SQLException
     {
+        int selectedCategories = genrefelt.getSelectionModel().getSelectedItems().size();
+        switch (selectedCategories) {
+            case 1:
+                Category selectedCategory = genrefelt.getSelectionModel().getSelectedItem();
+                filmfelt.setItems(movieModel.getMovies());
+                movieModel.loadMoviesFromGenre(selectedCategory);
+                break;
+            case 2:
+                Category selectedCategory1 = genrefelt.getSelectionModel().getSelectedItems().get(0);
+                Category selectedCategory2 = genrefelt.getSelectionModel().getSelectedItems().get(1);
+                filmfelt.setItems(movieModel.getMovies());
+                movieModel.loadMoviesFromGenre(selectedCategory1, selectedCategory2);
+                break;
+            case 3:
+                Category selectedCategory3 = genrefelt.getSelectionModel().getSelectedItems().get(0);
+                Category selectedCategory4 = genrefelt.getSelectionModel().getSelectedItems().get(1);
+                Category selectedCategory5 = genrefelt.getSelectionModel().getSelectedItems().get(2);
+                filmfelt.setItems(movieModel.getMovies());
+                movieModel.loadMoviesFromGenre(selectedCategory3, selectedCategory4, selectedCategory5);
+                break;
+            default:
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("ERROR MESSAGE!");
+                alert.setHeaderText("You have encountered an error!");
+                alert.setContentText("Please select between 1 to 3 Categories at a time before searching!");
+                alert.showAndWait();
+        }
+    }
+    
+    @FXML
+    private void setOnMouseClicked(MouseEvent event) {
+            genrefelt.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);         
     }
 
     @FXML
