@@ -85,11 +85,6 @@ public void editMovie(Movie movie)
         }
         
     }
-    public List<Movie> getAllMovies() 
-    {
-        return getAllMovies("");
-    
-    }
     public List<Movie> getAllMovies(String search) 
     {
         
@@ -120,6 +115,15 @@ public void editMovie(Movie movie)
         
        
         return movies;
+    }
+    public List<Movie> getAllMovies() 
+    {
+        return getAllMovies("");
+    
+    }
+    public List<Movie> searchMovies(String search)
+    {
+        return null;
     }
 }
 

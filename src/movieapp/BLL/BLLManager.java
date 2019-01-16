@@ -35,13 +35,13 @@ public class BLLManager
         {
         DAO.editMovie(movie);
         }
-    public List<Movie> getAllMovies() throws SQLServerException, SQLException
-        {
-        return DAO.getAllMovies();
-        }
     public List<Movie> getAllMovies(String Search) throws SQLServerException, SQLException
         {
         return DAO.getAllMovies(Search);
+        }
+    public List<Movie> getAllMovies() throws SQLServerException, SQLException
+        {
+        return DAO.getAllMovies();
         }
     public void newGenre(String name)
         {

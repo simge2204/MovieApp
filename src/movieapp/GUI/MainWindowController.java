@@ -5,7 +5,6 @@
  */
 package movieapp.GUI;
 
-import java.awt.BorderLayout;
 import java.awt.Component;
 import java.io.File;
 import java.io.IOException;
@@ -14,14 +13,10 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.beans.binding.Bindings;
-import javafx.beans.property.DoubleProperty;
-import javafx.embed.swing.JFXPanel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -30,13 +25,12 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.StackPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
+import static jdk.nashorn.internal.objects.NativeString.search;
 import movieapp.BE.Category;
 import movieapp.BE.Movie;
 import movieapp.BLL.BLLManager;
@@ -124,7 +118,9 @@ public class MainWindowController implements Initializable
  @FXML
     private void searchForMovie(ActionEvent event)throws SQLException 
     {
-        reload();
+        movieModel.loadMovies(søgefelt.getText());
+        filmfelt.setItems(movieModel.getMovies());
+        
     }
     
     public void reload() throws SQLException 
@@ -199,8 +195,10 @@ public class MainWindowController implements Initializable
 
 
     @FXML
-    private void reset(ActionEvent event)
+    private void reset(ActionEvent event) throws SQLException
     {
+        reload();
+        søgefelt.setText("");
     }
 
     @FXML
