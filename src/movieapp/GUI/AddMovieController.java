@@ -38,8 +38,6 @@ public class AddMovieController implements Initializable
     @FXML
     private TextField TitleField;
     @FXML
-    private TextField LastviewField;
-    @FXML
     private TextField PathField;
     @FXML
     private TextField MyRatingField;
@@ -65,7 +63,7 @@ public class AddMovieController implements Initializable
         String Title=TitleField.getText();
         Float Imdb=Float.parseFloat(ImdbField.getText());
         Float MyRating=Float.parseFloat(MyRatingField.getText());
-        String Lastview=LastviewField.getText();
+        String Lastview=null;
         String path=PathField.getText();
         Stage stage = (Stage) AddMovieBtn.getScene().getWindow();
         switch (type) 
@@ -80,7 +78,6 @@ public class AddMovieController implements Initializable
                 selectedMovie.setLastView(Lastview);
                 selectedMovie.setPath(path);
                 movieModel.editMovie(selectedMovie);
-//                bllManager.editMovie(selectedMovie);
                 break;
             default:
                 System.out.println("Something went wrong");
@@ -118,7 +115,6 @@ public class AddMovieController implements Initializable
         TitleField.setText(selectedMovie.getName());
         ImdbField.setText(String.valueOf(selectedMovie.getIMDBRating()));
         MyRatingField.setText(String.valueOf(selectedMovie.getPersonalRating()));
-        LastviewField.setText(String.valueOf(selectedMovie.getLastView()));
         PathField.setText(selectedMovie.getPath());
         }
 

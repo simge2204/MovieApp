@@ -6,6 +6,7 @@
 package movieapp.GUI;
 
 import java.awt.Component;
+import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -180,7 +181,16 @@ public class MainWindowController implements Initializable
     @FXML
     private void playMovie() throws IOException
         {
-        Runtime.getRuntime().exec("C:/Program Files/Windows Media Player/wmplayer.exe");
+        //Runtime.getRuntime().exec("C:/Program Files/Windows Media Player/wmplayer.exe");
+        Desktop desk = Desktop.getDesktop();
+        Movie selectedMovie = filmfelt.getSelectionModel().getSelectedItem();
+        File movieFile = new File(selectedMovie.getPath());
+        if(movieFile.exists()) {
+            if(desk.isSupported(Desktop.Action.OPEN));
+             try {Desktop.getDesktop().open(movieFile);
+             } catch (IOException e)
+             { e.printStackTrace(); }
+        }
         }
 
 

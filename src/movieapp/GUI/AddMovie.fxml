@@ -6,28 +6,22 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="355.0" prefWidth="416.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="movieapp.GUI.AddMovieController">
+<AnchorPane id="AnchorPane" prefHeight="319.0" prefWidth="432.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="movieapp.GUI.AddMovieController">
    <children>
       <TextField fx:id="TitleField" layoutX="161.0" layoutY="70.0" />
-      <TextField fx:id="LastviewField" layoutX="161.0" layoutY="174.0" />
       <Label fx:id="TxtField" layoutX="123.0" layoutY="69.0" text="Title">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
-      <Label layoutX="89.0" layoutY="174.0" text="Lastview">
+      <Button fx:id="AddMovieBtn" layoutX="197.0" layoutY="211.0" mnemonicParsing="false" onAction="#addMovie" text="AddMovie" />
+      <TextField fx:id="PathField" layoutX="162.0" layoutY="173.0" prefHeight="26.0" prefWidth="114.0" />
+      <Label layoutX="118.0" layoutY="173.0" text="Path">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
-      <Button fx:id="AddMovieBtn" layoutX="197.0" layoutY="247.0" mnemonicParsing="false" onAction="#addMovie" text="AddMovie" />
-      <TextField fx:id="PathField" layoutX="162.0" layoutY="209.0" prefHeight="26.0" prefWidth="114.0" />
-      <Label layoutX="118.0" layoutY="209.0" text="Path">
-         <font>
-            <Font size="17.0" />
-         </font>
-      </Label>
-      <Button layoutX="285.0" layoutY="210.0" mnemonicParsing="false" onAction="#clickbtnChoose" text="..." />
+      <Button layoutX="285.0" layoutY="174.0" mnemonicParsing="false" onAction="#clickbtnChoose" text="..." />
       <TextField fx:id="MyRatingField" layoutX="161.0" layoutY="138.0" />
       <TextField fx:id="ImdbField" layoutX="161.0" layoutY="104.0" />
       <Label layoutX="60.0" layoutY="102.0" text="Imdb Rating">
@@ -40,6 +34,6 @@
             <Font size="17.0" />
          </font>
       </Label>
-      <Button fx:id="Close" layoutX="341.0" layoutY="316.0" mnemonicParsing="false" onAction="#close" text="Close" />
+      <Button fx:id="Close" layoutX="341.0" layoutY="280.0" mnemonicParsing="false" onAction="#close" text="Close" />
    </children>
 </AnchorPane>
