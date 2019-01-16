@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="303.0" prefWidth="869.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="movieapp.GUI.MainWindowController">
+<AnchorPane id="AnchorPane" prefHeight="303.0" prefWidth="869.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="movieapp.GUI.MainWindowController">
     <children>
-        <Button fx:id="søge" layoutX="165.0" layoutY="11.0" onAction="#searchForMovie" text="Søge" />
+        <Button fx:id="søge" layoutX="200.0" layoutY="10.0" onAction="#searchForMovie" text="Søge" />
         <Label fx:id="label" layoutX="99.0" layoutY="18.0" minHeight="16" minWidth="69" />
       <TableView fx:id="genrefelt" layoutX="559.0" layoutY="46.0" prefHeight="200.0" prefWidth="170.0">
         <columns>
@@ -29,12 +29,12 @@
       <Button fx:id="AddMovie" layoutX="14.0" layoutY="256.0" mnemonicParsing="false" onAction="#addMovie" text="Add Movie" />
       <Button fx:id="RemoveMovie" layoutX="117.0" layoutY="256.0" mnemonicParsing="false" onAction="#removeMovie" text="Remove Movie" />
       <Button fx:id="EditMovie" layoutX="240.0" layoutY="256.0" mnemonicParsing="false" onAction="#editMovie" text="Edit Movie" />
-      <Button fx:id="Reset" layoutX="240.0" layoutY="11.0" onAction="#reset" text="Reset" />
+      <Button fx:id="Reset" layoutX="274.0" layoutY="10.0" onAction="#reset" text="Reset" />
       <Button fx:id="Close" layoutX="684.0" layoutY="256.0" mnemonicParsing="false" onAction="#close" text="Close" />
       <Button fx:id="AddGenre" layoutX="338.0" layoutY="256.0" mnemonicParsing="false" onAction="#addGenre" text="AddGenre" />
       <Button fx:id="RemoveGenre" layoutX="441.0" layoutY="256.0" mnemonicParsing="false" onAction="#removeGenre" prefHeight="25.0" prefWidth="95.0" text="Remove Genre" />
-      <Button fx:id="play" layoutX="313.0" layoutY="11.0" mnemonicParsing="false" onAction="#playMovie" text="Play" />
-      <Button fx:id="genreSøge" layoutX="552.0" layoutY="9.0" mnemonicParsing="false" onAction="#genreSøge" prefHeight="26.0" prefWidth="170.0" text="Genre Søge" />
+      <Button fx:id="play" layoutX="343.0" layoutY="10.0" mnemonicParsing="false" onAction="#playMovie" text="Play" />
+      <Button fx:id="genreSøge" layoutX="561.0" layoutY="9.0" mnemonicParsing="false" onAction="#genreSøge" prefHeight="26.0" prefWidth="170.0" text="Genre Søge" />
       <Button fx:id="NyGenre" layoutX="755.0" layoutY="146.0" mnemonicParsing="false" onAction="#NyGenre" prefHeight="25.0" prefWidth="88.0" text="Ny Genre" />
       <Button layoutX="755.0" layoutY="95.0" mnemonicParsing="false" onAction="#editGenre" prefHeight="26.0" prefWidth="88.0" text="Edit Genre" />
       <Label fx:id="genreController" layoutX="744.0" layoutY="11.0" text="Genre Controller">
@@ -43,7 +43,7 @@
          </font>
       </Label>
       <Button fx:id="DeleteGenreBtn" layoutX="755.0" layoutY="46.0" mnemonicParsing="false" onAction="#deleteGenre" prefHeight="25.0" prefWidth="88.0" text="Delete Genre" />
-      <Button fx:id="IMDBsøg" layoutX="470.0" layoutY="11.0" mnemonicParsing="false" onAction="#IMDBsøg" prefHeight="25.0" prefWidth="74.0" text="søg IMDB" />
-      <TextField fx:id="IMDBsøgefelt" layoutX="405.0" layoutY="11.0" prefHeight="25.0" prefWidth="62.0" />
+      <Button fx:id="IMDBsøg" layoutX="456.0" layoutY="9.0" mnemonicParsing="false" onAction="#IMDBsøg" prefHeight="26.0" prefWidth="102.0" text="søg IMDB" />
+      <TextField fx:id="IMDBsøgefelt" layoutX="391.0" layoutY="10.0" prefHeight="25.0" prefWidth="62.0" />
     </children>
 </AnchorPane>

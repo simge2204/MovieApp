@@ -282,7 +282,6 @@ public class MainWindowController implements Initializable
         }
     }
     
-    @FXML
     private void setOnMouseClicked(MouseEvent event) {
             genrefelt.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);         
     }
