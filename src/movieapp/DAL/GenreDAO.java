@@ -45,8 +45,9 @@ public class GenreDAO
         try (Connection con = cM.getConnection())
         {
         PreparedStatement stmt;
-        stmt = con.prepareStatement("DELETE FROM Genre WHERE id = ?");
+        stmt = con.prepareStatement("DELETE FROM Relations WHERE GenreId = ?; DELETE FROM Genre WHERE id = ?");
         stmt.setInt(1, id);
+        stmt.setInt(2, id);
         stmt.executeUpdate();
         }
         

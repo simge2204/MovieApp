@@ -283,6 +283,7 @@ public class MainWindowController implements Initializable
     @FXML
     private void deleteGenre(ActionEvent event) throws SQLException {
         bllManager.deleteGenre(genrefelt.getSelectionModel().getSelectedItem().getId());
+        reload();
     }
     
 }
