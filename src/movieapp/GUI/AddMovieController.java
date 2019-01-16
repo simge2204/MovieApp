@@ -6,6 +6,7 @@
 package movieapp.GUI;
 
 import java.net.URL;
+import java.sql.Date;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -63,7 +64,7 @@ public class AddMovieController implements Initializable
         String Title=TitleField.getText();
         Float Imdb=Float.parseFloat(ImdbField.getText());
         Float MyRating=Float.parseFloat(MyRatingField.getText());
-        String Lastview=null;
+        Date Lastview=null;
         String path=PathField.getText();
         Stage stage = (Stage) AddMovieBtn.getScene().getWindow();
         switch (type) 

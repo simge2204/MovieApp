@@ -5,6 +5,8 @@
  */
 package movieapp.BE;
 
+import java.sql.Date;
+
 /**
  *
  * @author simge
@@ -15,7 +17,7 @@ public class Movie
     private String name;
     private float IMDBRating;
     private float personalRating;
-    private String lastView;
+    private Date lastView;
     private String path;
     
     public Movie()
@@ -54,11 +56,11 @@ public class Movie
         {
         this.personalRating = personalRating;
         }
-    public String getLastView()
+    public Date getLastView()
         {
         return lastView;
         }
-    public void setLastView(String lastView)
+    public void setLastView(Date lastView)
         {
         this.lastView = lastView;
         }

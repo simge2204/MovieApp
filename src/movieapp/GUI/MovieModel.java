@@ -6,6 +6,7 @@
 package movieapp.GUI;
 
 import com.microsoft.sqlserver.jdbc.SQLServerException;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 import javafx.collections.FXCollections;
@@ -41,7 +42,7 @@ public class MovieModel
         movies.clear();
         movies.addAll(loadedMovies);
     }
-    public void addMovie(String title, float imdb, float rating, String lastview, String path) throws SQLException
+    public void addMovie(String title, float imdb, float rating, Date lastview, String path) throws SQLException
         {
         bllManager.addMovie(title, imdb, rating, lastview, path);
         }
@@ -73,5 +74,16 @@ public class MovieModel
         
         movies.clear();
         movies.addAll(loadedMovies);
+    }
+    public void IMDBSearch(float IMDB) throws SQLException
+    {
+        List<Movie> loadedMovies = bllManager.IMDBSearch(IMDB);
+        
+        movies.clear();
+        movies.addAll(loadedMovies);
+    }
+    public void editDate(Movie movie)
+    {
+        bllManager.editDate(movie);
     }
     }

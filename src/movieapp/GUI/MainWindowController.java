@@ -10,6 +10,7 @@ import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -110,7 +111,7 @@ public class MainWindowController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
-        JOptionPane.showMessageDialog(frame, "Remember to delete Movies you haven't watch in a long time, especially those with a low score to safe space on your PC.");
+        JOptionPane.showMessageDialog(frame, "Remember to delete Movies you haven't watch in a long time, especially those with a low score to save space on your PC.");
         title.setCellValueFactory(new PropertyValueFactory("name"));
         imdbRating.setCellValueFactory(new PropertyValueFactory("IMDBRating"));
         myRating.setCellValueFactory(new PropertyValueFactory("personalRating"));
@@ -186,18 +187,22 @@ public class MainWindowController implements Initializable
     }
     
     @FXML
-    private void playMovie() throws IOException
+    private void playMovie() throws IOException, SQLException
         {
         //Runtime.getRuntime().exec("C:/Program Files/Windows Media Player/wmplayer.exe");
         Desktop desk = Desktop.getDesktop();
         Movie selectedMovie = filmfelt.getSelectionModel().getSelectedItem();
         File movieFile = new File(selectedMovie.getPath());
+        Date currentDate = new Date(System.currentTimeMillis());
+        selectedMovie.setLastView(currentDate);
+        movieModel.editDate(selectedMovie);
         if(movieFile.exists()) {
             if(desk.isSupported(Desktop.Action.OPEN));
              try {Desktop.getDesktop().open(movieFile);
              } catch (IOException e)
              { e.printStackTrace(); }
         }
+        reload();
         }
 
 
@@ -282,6 +287,7 @@ public class MainWindowController implements Initializable
         }
     }
     
+    @FXML
     private void setOnMouseClicked(MouseEvent event) {
             genrefelt.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);         
     }
@@ -326,8 +332,10 @@ public class MainWindowController implements Initializable
 
     @FXML
     private void IMDBsøg(ActionEvent event) throws SQLException
-        {
-        movieModel.loadMovies(IMDBsøgefelt.getText(0, 10));
-        }
+    {
+        Float IMDB = Float.parseFloat(IMDBsøgefelt.getText());
+        movieModel.IMDBSearch(IMDB);
+        
+    }
     
 }

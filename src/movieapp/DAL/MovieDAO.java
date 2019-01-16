@@ -7,6 +7,7 @@ package movieapp.DAL;
 
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -34,7 +35,7 @@ public class MovieDAO
      * @param path
      * @throws com.microsoft.sqlserver.jdbc.SQLServerException
      */
-    public void addMovie(String title, float imdb, float rating, String lastview, String path) throws SQLServerException, SQLException
+    public void addMovie(String title, float imdb, float rating, Date lastview, String path) throws SQLServerException, SQLException
         {
             try (Connection con = cM.getConnection()){
             PreparedStatement stmt;
@@ -42,7 +43,7 @@ public class MovieDAO
             stmt.setString(1, title);
             stmt.setFloat(2, imdb);
             stmt.setFloat(3, rating);
-            stmt.setString(4, lastview);
+            stmt.setDate(4, lastview);
             stmt.setString(5, path);
             stmt.executeUpdate();
         }
@@ -74,12 +75,12 @@ public void editMovie(Movie movie)
         try (Connection con = cM.getConnection()) 
     {
             PreparedStatement stmt = con.prepareStatement("UPDATE Movie SET Title=?, IMDB=?, Rating=?, LastView=?, Path=? WHERE Id=?");
-            stmt.setInt(6, movie.getId());
             stmt.setString(1, movie.getName());
             stmt.setFloat(2, movie.getIMDBRating());
             stmt.setFloat(3, movie.getPersonalRating());
-//            stmt.setString(4, movie.getLastView());
+            stmt.setDate(4, movie.getLastView());
             stmt.setString(5, movie.getPath());
+            stmt.setInt(6, movie.getId());
             stmt.executeUpdate();
         }
         catch (SQLException ex) {
@@ -106,7 +107,7 @@ public void editMovie(Movie movie)
                 currentMovie.setName(rs.getString("Title"));
                 currentMovie.setIMDBRating(rs.getFloat("IMDB"));
                 currentMovie.setPersonalRating(rs.getFloat("Rating"));
-                currentMovie.setLastView(rs.getString("LastView"));
+                currentMovie.setLastView(rs.getDate("LastView"));
                 currentMovie.setPath(rs.getString("Path"));
                 movies.add(currentMovie);
             }
@@ -143,7 +144,7 @@ public void editMovie(Movie movie)
                currentMovie.setPersonalRating(rs.getFloat("Rating"));
                currentMovie.setIMDBRating(rs.getFloat("IMDB"));
                currentMovie.setPath(rs.getString("Path"));
-               currentMovie.setLastView(rs.getString("LastView")); 
+               currentMovie.setLastView(rs.getDate("LastView")); 
                movies.add(currentMovie);
            }
            
@@ -173,7 +174,7 @@ public void editMovie(Movie movie)
                currentMovie.setPersonalRating(rs.getFloat("Rating"));
                currentMovie.setIMDBRating(rs.getFloat("IMDB"));
                currentMovie.setPath(rs.getString("Path"));
-               currentMovie.setLastView(rs.getString("LastView")); 
+               currentMovie.setLastView(rs.getDate("LastView")); 
                movies.add(currentMovie);
            }
            
@@ -204,7 +205,7 @@ public void editMovie(Movie movie)
                currentMovie.setPersonalRating(rs.getFloat("Rating"));
                currentMovie.setIMDBRating(rs.getFloat("IMDB"));
                currentMovie.setPath(rs.getString("Path"));
-               currentMovie.setLastView(rs.getString("LastView")); 
+               currentMovie.setLastView(rs.getDate("LastView")); 
                movies.add(currentMovie);
            }
            
@@ -215,5 +216,49 @@ public void editMovie(Movie movie)
         }
    return movies;
    }
+   
+   public List<Movie> IMDBSearch(float IMDB) throws SQLException, SQLException, SQLException {
+       List<Movie> movies = new ArrayList();
+       try (Connection con = cM.getConnection()) {
+           
+           PreparedStatement stmt;
+           stmt = con.prepareStatement("SELECT * FROM Movie WHERE IMDB >= ?");
+           stmt.setFloat(1, IMDB);
+           
+           ResultSet rs = stmt.executeQuery();
+           
+           while(rs.next()) {
+               Movie currentMovie = new Movie();
+               currentMovie.setId(rs.getInt("Id"));
+               currentMovie.setName(rs.getString("Title"));
+               currentMovie.setPersonalRating(rs.getFloat("Rating"));
+               currentMovie.setIMDBRating(rs.getFloat("IMDB"));
+               currentMovie.setPath(rs.getString("Path"));
+               currentMovie.setLastView(rs.getDate("LastView")); 
+               movies.add(currentMovie);
+           }
+           
+       } catch (SQLServerException ex) {
+            Logger.getLogger(MovieDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(MovieDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+   return movies;
+   }
+   
+   public void editDate(Movie movie) 
+    {
+        try (Connection con = cM.getConnection()) 
+    {
+            PreparedStatement stmt = con.prepareStatement("UPDATE Movie SET LastView=? WHERE Id=?");
+            stmt.setDate(1, movie.getLastView());
+            stmt.setInt(2, movie.getId());
+            stmt.executeUpdate();
+        }
+        catch (SQLException ex) {
+            Logger.getLogger(MovieDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
 }
 

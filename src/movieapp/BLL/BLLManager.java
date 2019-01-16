@@ -6,6 +6,7 @@
 package movieapp.BLL;
 
 import com.microsoft.sqlserver.jdbc.SQLServerException;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 import javafx.collections.ObservableList;
@@ -23,7 +24,7 @@ public class BLLManager
     MovieDAO DAO = new MovieDAO();
     GenreDAO dao = new GenreDAO();
     
-    public void addMovie(String title, float imdb, float rating, String lastview, String path) throws SQLException
+    public void addMovie(String title, float imdb, float rating, Date lastview, String path) throws SQLException
         {
         DAO.addMovie(title, imdb, rating, lastview, path);
         }
@@ -82,5 +83,13 @@ public class BLLManager
     public List<Movie> getMoviesFromCategory(Category selectedGenre3, Category selectedGenre4, Category selectedGenre5) throws SQLException
     {
         return DAO.getMoviesFromCategory(selectedGenre3, selectedGenre4, selectedGenre5);
+    }
+    public List<Movie> IMDBSearch(float IMDB) throws SQLException
+    {
+        return DAO.IMDBSearch(IMDB);
+    }
+    public void editDate(Movie movie)
+    {
+        DAO.editDate(movie);
     }
 }
