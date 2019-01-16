@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import movieapp.BE.Category;
 import movieapp.BE.Movie;
 import movieapp.BLL.BLLManager;
 
@@ -60,4 +61,16 @@ public class MovieModel
         {
         
         }
+    public List<Movie> getMoviesFromCategory(Category selectedGenre)
+    {
+        return bllManager.getMoviesFromCategory(selectedGenre);
+    }
+    public List<Movie> getMoviesFromCategory(Category selectedGenre1, Category selectedGenre2)
+    {
+        return bllManager.getMoviesFromCategory(selectedGenre1, selectedGenre2);
+    }
+    public List<Movie> getMoviesFromCategory(Category selectedGenre3, Category selectedGenre4, Category selectedGenre5) throws SQLException
+    {
+        return bllManager.getMoviesFromCategory(selectedGenre3, selectedGenre4, selectedGenre5);
+    }
     }

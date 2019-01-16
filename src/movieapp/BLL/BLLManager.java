@@ -71,4 +71,16 @@ public class BLLManager
     {
         dao.RemoveGenreFromMovie(selectedGenre, selectedMovie);
     }
+    public List<Movie> getMoviesFromCategory(Category selectedGenre)
+    {
+        return DAO.getMoviesFromCategory(selectedGenre);
+    }
+    public List<Movie> getMoviesFromCategory(Category selectedGenre1, Category selectedGenre2)
+    {
+        return DAO.getMoviesFromCategory(selectedGenre1, selectedGenre2);
+    }
+    public List<Movie> getMoviesFromCategory(Category selectedGenre3, Category selectedGenre4, Category selectedGenre5) throws SQLException
+    {
+        return DAO.getMoviesFromCategory(selectedGenre3, selectedGenre4, selectedGenre5);
+    }
 }

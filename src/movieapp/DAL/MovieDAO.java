@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import movieapp.BE.Category;
 import movieapp.BE.Movie;
 
 /**
@@ -126,5 +127,93 @@ public void editMovie(Movie movie)
     {
         return null;
     }
+    
+    public List<Movie> getMoviesFromCategory(Category selectedGenre) {
+       List<Movie> movies = new ArrayList();
+       try (Connection con = cM.getConnection()){
+           PreparedStatement stmt;
+           stmt = con.prepareStatement("SELECT * FROM Movie WHERE ID IN(SELECT MovieId FROM Relations WHERE GenreId = ? )");
+           stmt.setInt(1, selectedGenre.getId());
+           ResultSet rs = stmt.executeQuery();
+           
+           while(rs.next()) {
+               Movie currentMovie = new Movie();
+               currentMovie.setId(rs.getInt("Id"));
+               currentMovie.setName(rs.getString("Name"));
+               currentMovie.setPersonalRating(rs.getFloat("Rating"));
+               currentMovie.setIMDBRating(rs.getFloat("IMDB"));
+               currentMovie.setPath(rs.getString("Path"));
+               currentMovie.setLastView(rs.getString("LastView")); 
+               movies.add(currentMovie);
+           }
+           
+       } catch (SQLServerException ex) {
+            Logger.getLogger(MovieDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(MovieDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+   return movies;
+   }
+   
+   public List<Movie> getMoviesFromCategory(Category selectedGenre1, Category selectedGenre2)  {
+       List<Movie> movies = new ArrayList();
+       try (Connection con = cM.getConnection()) {
+           
+           PreparedStatement stmt;
+           stmt = con.prepareStatement("SELECT * FROM Movie WHERE ID IN (SELECT MovieId FROM Relations WHERE GenreId = ? or GenreId = ? )");
+           stmt.setInt(1, selectedGenre1.getId());
+           stmt.setInt(2, selectedGenre2.getId());
+           
+           ResultSet rs = stmt.executeQuery();
+           
+           while(rs.next()) {
+               Movie currentMovie = new Movie();
+               currentMovie.setId(rs.getInt("Id"));
+               currentMovie.setName(rs.getString("Name"));
+               currentMovie.setPersonalRating(rs.getFloat("Rating"));
+               currentMovie.setIMDBRating(rs.getFloat("IMDB"));
+               currentMovie.setPath(rs.getString("Path"));
+               currentMovie.setLastView(rs.getString("LastView")); 
+               movies.add(currentMovie);
+           }
+           
+       } catch (SQLServerException ex) {
+            Logger.getLogger(MovieDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(MovieDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+   return movies;
+   }
+   
+   public List<Movie> getMoviesFromCategory(Category selectedGenre3, Category selectedGenre4, Category selectedGenre5) throws SQLException, SQLException, SQLException {
+       List<Movie> movies = new ArrayList();
+       try (Connection con = cM.getConnection()) {
+           
+           PreparedStatement stmt;
+           stmt = con.prepareStatement("Select * From Movie where ID in (SELECT MovieId FROM Relations WHERE GenreId = ? OR GenreId = ? OR GenreId = ? )");
+           stmt.setInt(1, selectedGenre3.getId());
+           stmt.setInt(2, selectedGenre4.getId());
+           stmt.setInt(3, selectedGenre5.getId());
+           
+           ResultSet rs = stmt.executeQuery();
+           
+           while(rs.next()) {
+               Movie currentMovie = new Movie();
+               currentMovie.setId(rs.getInt("Id"));
+               currentMovie.setName(rs.getString("Name"));
+               currentMovie.setPersonalRating(rs.getFloat("Rating"));
+               currentMovie.setIMDBRating(rs.getFloat("IMDB"));
+               currentMovie.setPath(rs.getString("Path"));
+               currentMovie.setLastView(rs.getString("LastView")); 
+               movies.add(currentMovie);
+           }
+           
+       } catch (SQLServerException ex) {
+            Logger.getLogger(MovieDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(MovieDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+   return movies;
+   }
 }
 
