@@ -180,17 +180,7 @@ public class MainWindowController implements Initializable
     @FXML
     private void playMovie() throws IOException
         {
-        File video_source = new File("");
-        Media m = new Media(video_source.toURI().toString());
-        MediaPlayer player = new MediaPlayer(m);
-        MediaView viewer = new MediaView(player);
-        selectedMovie = filmfelt.getSelectionModel().getSelectedItem();
-        Runtime.getRuntime().exec("cmd /c start/wmplayer.exe");
-        Runtime.getRuntime().exec("cmd /c start/ file.bat");
-        Process p = Runtime.getRuntime().exec("cmd /c start/Program Files/Windows Media Player/wmplayer.exe");
-//        BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream()));
-//        player.play();
-        viewer.getMediaPlayer().play();
+        Runtime.getRuntime().exec("C:/Program Files/Windows Media Player/wmplayer.exe");
         }
 
 
