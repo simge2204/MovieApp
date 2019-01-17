@@ -158,6 +158,7 @@ public class MainWindowController implements Initializable
     @FXML
     private void removeMovie(ActionEvent event) throws IOException, SQLException
     {
+        selectedMovie = filmfelt.getSelectionModel().getSelectedItem();
         movieDAO.deleteMovie(selectedMovie.getId());
         reload();
     }
