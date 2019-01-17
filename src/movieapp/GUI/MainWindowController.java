@@ -134,17 +134,10 @@ public class MainWindowController implements Initializable
     
     public void reload() throws SQLException 
     {
-        selectedMovie = filmfelt.getSelectionModel().getSelectedItem();
-        filmfelt.setItems(movieModel.getMovies());
-        movieModel.loadMovies(søgefelt.getText());
-        //if(selectedMovie!=null)
-        //{
-            genrefelt.setItems(categoryModel.getGenres());
-            categoryModel.loadGenres();
-        //}
         filmfelt.setItems(movieModel.getMovies());
         movieModel.loadMovies();
-        filmfelt.getSelectionModel().select(selectedMovie);
+        genrefelt.setItems(categoryModel.getGenres());
+        categoryModel.loadGenres();
     }
     
     @FXML
@@ -211,6 +204,7 @@ public class MainWindowController implements Initializable
     {
         reload();
         søgefelt.setText("");
+        IMDBsøgefelt.setText("");
     }
 
     @FXML
