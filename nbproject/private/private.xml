@@ -3,11 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/kedde/Desktop/MovieApp/src/movieapp/DAL/MovieDAO.java</file>
-            <file>file:/C:/Users/kedde/Desktop/MovieApp/src/movieapp/BLL/BLLManager.java</file>
-            <file>file:/C:/Users/kedde/Desktop/MovieApp/src/movieapp/GUI/AddMovieController.java</file>
-            <file>file:/C:/Users/kedde/Desktop/MovieApp/src/movieapp/GUI/MainWindowController.java</file>
-            <file>file:/C:/Users/kedde/Desktop/MovieApp/src/movieapp/GUI/MovieModel.java</file>
+            <file>file:/C:/Users/maxim/OneDrive/Dokumenter/NetBeansProjects/MovieApp/src/movieapp/GUI/MainWindowController.java</file>
+            <file>file:/C:/Users/maxim/OneDrive/Dokumenter/NetBeansProjects/MovieApp/src/movieapp/DAL/MovieDAO.java</file>
+            <file>file:/C:/Users/maxim/OneDrive/Dokumenter/NetBeansProjects/MovieApp/src/movieapp/BLL/BLLManager.java</file>
+            <file>file:/C:/Users/maxim/OneDrive/Dokumenter/NetBeansProjects/MovieApp/src/movieapp/GUI/MovieModel.java</file>
+            <file>file:/C:/Users/maxim/OneDrive/Dokumenter/NetBeansProjects/MovieApp/src/movieapp/GUI/NewEditGenre.fxml</file>
         </group>
     </open-files>
 </project-private>
