@@ -30,12 +30,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
-import static jdk.nashorn.internal.objects.NativeString.search;
 import movieapp.BE.Category;
 import movieapp.BE.Movie;
 import movieapp.BLL.BLLManager;
@@ -150,7 +146,7 @@ public class MainWindowController implements Initializable
         cpController.setMovieModel(movieModel);
         cpController.setMainWindowController(this);
         cpController.setNew();
-        stage.setTitle("AddMovie");
+        stage.setTitle("Add Movie");
         stage.setScene(new Scene(root2));
         stage.show();
     }
@@ -175,7 +171,7 @@ public class MainWindowController implements Initializable
         cpController.setEdit();
         selectedMovie = filmfelt.getSelectionModel().getSelectedItem();
         cpController.setMovie(selectedMovie);
-        stage.setTitle("EditPlaylist");
+        stage.setTitle("Edit Movie");
         stage.setScene(new Scene(root2));
         stage.show();
     }
